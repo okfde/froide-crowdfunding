@@ -1,0 +1,43 @@
+{% load i18n %}
+{% load form_helper %}
+{% load crowdfunding %}
+
+<h3>{% trans "Crowdfunding" %}</h3>
+{% with crowdfundings=object|get_crowdfundings %}
+  {% for crowdfunding in crowdfundings %}
+    <h4>
+      {{ crowdfunding.title }} - {{ crowdfunding.amount_requested }}&nbsp;€
+    </h4>
+    {% if crowdfunding.status == "needs_approval" %}
+      <p>
+        {% trans "This crowdfunding is waiting for approval." %}
+      </p>
+    {% elif crowdfunding.status == "denied" %}
+      <p>
+        {% trans "This crowdfunding has been denied." %}
+      </p>
+    {% elif crowdfunding.status == "finished" %}
+      {% trans "This crowdfunding has finished." %}
+    {% else %}
+      {% trans "This crowdfunding is running!" %}
+    {% endif %}
+  {% endfor %}
+{% endwith %}
+
+{% with form=object|get_crowdfunding_start_form %}
+  {% if form %}
+    <h4>{% trans "Start a crowdfunding campaign" %}</h4>
+    <form action="{% url 'crowdfunding-request' pk=object.pk %}" method="post">
+      {% csrf_token %}
+      {% if crowdfunding_form %}
+        {% render_form crowdfunding_form %}
+      {% else %}
+        {% render_form form %}
+      {% endif %}
+      <button type="submit" class="btn btn-primary">
+        {% trans "Request crowdfunding campaign" %}
+      </button>
+    </form>
+  {% endif %}
+{% endwith %}
+

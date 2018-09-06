@@ -1,0 +1,96 @@
+{% load i18n %}
+{% load form_helper %}
+{% load crowdfunding %}
+
+
+<div class="card mb-3 mt-3" id="crowdfunding-form">
+    <div class="card-header">
+      <h3 class="float-left">{% trans "Crowdfunding" %}</h3>
+      {% if crowdfunding.date_end %}
+        <time class="float-right" title="{{ crowdfunding.date_end }}" datetime="{{ crowdfunding.date_end | date:'c' }}">noch {{ crowdfunding.date_end|timeuntil }}</time>
+      {% endif %}
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8">
+          <h5 class="card-title">
+            {{ crowdfunding.title }}
+          </h5>
+        </div>
+        {% if not object and crowdfunding.request %}
+          <div class="col-md-4 text-right">
+            <a href="{{ crowdfunding.request.get_absolute_url }}">
+              zur Anfrage
+            </a>
+          </div>
+        {% endif %}
+      </div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{ crowdfunding.progress_percent }}%" aria-valuenow="{{ crowdfunding.progress_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="text-right">
+          <small class="text-muted">
+            {{ crowdfunding.amount_raised }}&nbsp;€ von {{ crowdfunding.amount_needed }}&nbsp;€
+          </small>
+      </div>
+      <p class="lead">
+        {% if crowdfunding.user.private %}
+          {% blocktrans with amount=crowdfunding.amount_needed %}
+            This user is crowdfunding <strong>{{ amount }}&nbsp;€</strong> for this purpose:
+          {% endblocktrans %}
+        {% else %}
+          {% blocktrans with amount=crowdfunding.amount_needed name=crowdfunding.user.get_full_name %}
+            {{ name }} is crowdfunding <strong>{{ amount }}&nbsp;€</strong> for this purpose:
+          {% endblocktrans %}
+        {% endif %}
+      </p>
+      <blockquote>
+        <p class="card-text">
+          {{ crowdfunding.description|linebreaksbr }}
+        </p>
+      </blockquote>
+      <hr/>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-8">
+          <h4>Bedingungen</h4>
+          <ul>
+            <li>
+              <span class="fa fa-check"></span>
+              Wenn das Crowdfunding sein Ziel erreicht, wird das Geld dem oben genannten Zweck zugeführt.
+            </li>
+            <li>
+              <span class="fa fa-gift"></span>
+              Wenn nach Zweckerfüllung Geld übrig bleibt oder (z.B. bei Klageerfolg) zurückkommt, wird es als allgemeine Spende an FragDenStaat.de verbucht.
+            </li>
+            <li>
+              <span class="fa fa-ban"></span>
+              Ist das Crowdfunding nicht erfolgreich, wird der eingenommene Betrag als allgemeine Spende an FragDenStaat.de verbucht.
+            </li>
+            <li>
+              <span class="fa fa-heart"></span>
+              Über das Crowdfunding spenden Sie an den gemeinnützigen Trägerverein von FragDenStaat.de. Sie können die Spende steuerlich geltend machen.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr/>
+      <h4>
+        Wie viel können Sie beitragen?
+      </h4>
+      <form method="post" action="{% url 'crowdfunding-start_contribution' pk=crowdfunding.pk %}#crowdfunding-form">
+        {% csrf_token %}
+        {% if crowdfunding_contribute_form %}
+          {% render_form crowdfunding_contribute_form %}
+        {% else %}
+          {% with crowdfunding_form=request.user|get_crowdfunding_form %}
+            {% render_form crowdfunding_form %}
+          {% endwith %}
+        {% endif %}
+        <div class="text-right">
+          <button class="btn btn-primary btn-lg" type="submit">
+            {% trans "Next step &rarr;" %}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

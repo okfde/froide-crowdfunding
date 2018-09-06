@@ -1,0 +1,7 @@
+{% load crowdfunding %}
+
+{% with crowdfundings=object|get_crowdfundings:"running" %}
+  {% for crowdfunding in crowdfundings %}
+    {% include "froide_crowdfunding/includes/crowdfunding_form.html" with crowdfunding=crowdfunding %}
+  {% endfor %}
+{% endwith %}

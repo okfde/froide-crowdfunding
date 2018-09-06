@@ -1,0 +1,38 @@
+{% extends "froide_crowdfunding/base.html" %}
+
+{% load static %}
+{% load sekizai_tags %}
+
+
+
+{% block main %}
+<div id="crowdfunding-map-wrapper">
+  <crowdfunding-map :config="config">
+    <div class="text-center">
+      <h3>Anwendung wird geladen</h3>
+      <p>
+        <img src="{% static "img/spinner.gif" %}" alt="wird geladen"/>
+      </p>
+    </div>
+  </crowdfunding-map>
+</div>
+
+{% addtoblock 'css' %}
+  <link rel="stylesheet" href="{% static 'css/crowdfunding.css' %}">
+{% endaddtoblock %}
+
+{% addtoblock 'js' %}
+  <script src="{% static 'js/common.js' %}" charset="utf-8"></script>
+  <script src="{% static 'js/crowdfunding.js' %}" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.L.Icon.Default.imagePath = '{% static "crowdfunding/images/leaflet/marker-icon.png" %}'.split('/').slice(0, -1).join('/') + '/'
+    window.Froide.components.crowdfunding.createcrowdfundingMap('#crowdfunding-map-wrapper', {
+      city: {{ city | safe }},
+      filters: {{ filters | safe }},
+      imagePath: '{% static "crowdfunding/images/pin_0.svg" %}'.split('/').slice(0, -1).join('/') + '/'
+    })
+  </script>
+{% endaddtoblock %}
+
+
+{% endblock %}
