@@ -6,8 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from froide.helper.widgets import PriceInput
 from froide.helper.db_utils import save_obj_with_slug
 
-from froide_payment import PAYMENT_METHODS
-from froide_payment.models import Order
+from froide_payment.models import Order, PAYMENT_METHODS
 
 from .models import OVERHEAD_FACTOR, Crowdfunding, Contribution
 
