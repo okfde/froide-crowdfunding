@@ -77,7 +77,7 @@
       <h4>
         Wie viel können Sie beitragen?
       </h4>
-      <form method="post" action="{% url 'crowdfunding-start_contribution' pk=crowdfunding.pk %}#crowdfunding-form">
+      <form method="post" action="{% url 'crowdfunding:crowdfunding-start_contribution' pk=crowdfunding.pk %}#crowdfunding-form">
         {% csrf_token %}
         {% if crowdfunding_contribute_form %}
           {% render_form crowdfunding_contribute_form %}

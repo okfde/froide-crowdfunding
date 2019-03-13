@@ -27,7 +27,7 @@
 {% with form=object|get_crowdfunding_start_form %}
   {% if form %}
     <h4>{% trans "Start a crowdfunding campaign" %}</h4>
-    <form action="{% url 'crowdfunding-request' pk=object.pk %}" method="post">
+    <form action="{% url 'crowdfunding:crowdfunding-request' pk=object.pk %}" method="post">
       {% csrf_token %}
       {% if crowdfunding_form %}
         {% render_form crowdfunding_form %}

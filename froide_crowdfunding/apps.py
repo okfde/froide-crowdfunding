@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -8,7 +8,7 @@ class FroideCrowdfundingConfig(AppConfig):
     verbose_name = _("Froide Crowdfunding App")
 
     def ready(self):
-        # FIXME: add export, cancel and merging user hooks
+        # TODO: add export, cancel and merging user hooks
         from payments.signals import status_changed
         from froide.account.menu import menu_registry, MenuItem
 
@@ -20,8 +20,11 @@ class FroideCrowdfundingConfig(AppConfig):
         def get_campaign_menu_item(request):
             if not request.user.is_staff:
                 return None
-            return MenuItem(
-                section='before_settings', order=10,
-                url=reverse('crowdfunding-edit'),
-                label=_('Your crowdfundings')
-            )
+            try:
+                return MenuItem(
+                    section='before_settings', order=10,
+                    url=reverse('crowdfunding:crowdfunding-edit'),
+                    label=_('Your crowdfundings')
+                )
+            except NoReverseMatch:
+                return None

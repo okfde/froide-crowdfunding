@@ -80,7 +80,7 @@ class Crowdfunding(models.Model):
         return min(int(self.amount_raised / self.amount_needed * 100), 100)
 
     def get_absolute_url(self):
-        return reverse('crowdfunding-start_contribution',
+        return reverse('crowdfunding:crowdfunding-start_contribution',
                        kwargs={'pk': self.pk})
 
     def update_amount_raised(self, save=True):

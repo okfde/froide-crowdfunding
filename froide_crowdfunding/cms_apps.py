@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 @apphook_pool.register
 class CrowdfundingCMSApp(CMSApp):
     name = _('Crowdfunding CMS App')
+    app_name = 'crowdfunding'
 
     def get_urls(self, page=None, language=None, **kwargs):
         return ["froide_crowdfunding.urls"]
