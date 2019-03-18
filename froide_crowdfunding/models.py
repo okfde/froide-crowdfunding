@@ -80,6 +80,10 @@ class Crowdfunding(models.Model):
         return min(int(self.amount_raised / self.amount_needed * 100), 100)
 
     def get_absolute_url(self):
+        return reverse('crowdfunding:crowdfunding-detail',
+                       kwargs={'slug': self.slug})
+
+    def get_start_contribution_url(self):
         return reverse('crowdfunding:crowdfunding-start_contribution',
                        kwargs={'pk': self.pk})
 
@@ -143,3 +147,7 @@ class Contribution(models.Model):
 
     def get_failure_url(self):
         return '/?failure'
+
+    @property
+    def status_color(self):
+        return self.STATUS_COLORS[self.status]

@@ -5,8 +5,9 @@ from django.contrib import messages
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.db.models import Case, When, Value, BooleanField, Q
 
 from froide.foirequest.models import FoiRequest
 from froide.foirequest.auth import can_write_foirequest
@@ -32,6 +33,31 @@ class CrowdfundingListView(UserPassesTestMixin, ListView):
         return Crowdfunding.objects.filter(
             status='running'
         )
+
+
+class CrowdfundingDetailView(UserPassesTestMixin, DetailView):
+    template_name = 'froide_crowdfunding/detail.html'
+
+    def get_test_func(self):
+        return lambda: self.request.user.is_staff
+
+    def get_queryset(self):
+        return Crowdfunding.objects.filter(
+            Q(status='running') | Q(status='finished')
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contributions'] = self.object.contribution_set.annotate(
+            mine=Case(
+                When(user_id=self.request.user.id, then=Value(True)),
+                default=Value(False),
+                output_field=BooleanField()
+            )
+        ).filter(
+            Q(mine=True) | Q(status='success')
+        ).order_by('-mine', '-timestamp')
+        return context
 
 
 @require_POST
@@ -75,7 +101,7 @@ def start_contribution(request, pk):
         'crowdfunding': crowdfunding,
         'user': user
     }
-
+    status = 200
     if request.method == 'POST':
         form = ContributionForm(data=request.POST, **form_kwargs)
 
@@ -86,10 +112,11 @@ def start_contribution(request, pk):
                 'token': contribution.order.token,
                 'variant': data['method']
             }))
+        status = 400
     else:
         form = ContributionForm(**form_kwargs)
 
     return render(request, 'froide_crowdfunding/contribute.html', {
         'form': form,
         'crowdfunding': crowdfunding
-    }, status=400)
+    }, status=status)

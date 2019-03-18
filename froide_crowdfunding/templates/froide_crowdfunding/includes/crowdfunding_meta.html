@@ -1,0 +1,40 @@
+{% load i18n %}
+
+<div class="row">
+  <div class="col-md-8">
+    <h5 class="card-title">
+      {{ crowdfunding.title }}
+    </h5>
+  </div>
+  {% if not object and crowdfunding.request %}
+    <div class="col-md-4 text-right">
+      <a href="{{ crowdfunding.request.get_absolute_url }}">
+        zur Anfrage
+      </a>
+    </div>
+  {% endif %}
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: {{ crowdfunding.progress_percent }}%" aria-valuenow="{{ crowdfunding.progress_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="text-right">
+    <small class="text-muted">
+      {{ crowdfunding.amount_raised }}&nbsp;€ von {{ crowdfunding.amount_needed }}&nbsp;€
+    </small>
+</div>
+<p class="lead">
+  {% if crowdfunding.user.private %}
+    {% blocktrans with amount=crowdfunding.amount_needed %}
+      This user is crowdfunding <strong>{{ amount }}&nbsp;€</strong> for this purpose:
+    {% endblocktrans %}
+  {% else %}
+    {% blocktrans with amount=crowdfunding.amount_needed name=crowdfunding.user.get_full_name %}
+      {{ name }} is crowdfunding <strong>{{ amount }}&nbsp;€</strong> for this purpose:
+    {% endblocktrans %}
+  {% endif %}
+</p>
+<blockquote>
+  <p class="card-text">
+    {{ crowdfunding.description|linebreaksbr }}
+  </p>
+</blockquote>

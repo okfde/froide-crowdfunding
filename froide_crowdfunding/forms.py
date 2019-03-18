@@ -3,7 +3,7 @@ import re
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from froide.helper.widgets import PriceInput
+from froide.helper.widgets import BootstrapCheckboxInput, PriceInput
 from froide.helper.db_utils import save_obj_with_slug
 
 from froide_payment.models import Order, PAYMENT_METHODS
@@ -119,8 +119,9 @@ class ContributionForm(forms.Form):
     note = forms.CharField(
         label=_('Note'),
         required=False,
+        max_length=260,
         help_text=_(
-            'Leave an optional public note why you are '
+            'Leave an optional public note (260 chars) why you are '
             'supporting this crowdfunding.'),
         widget=forms.Textarea(attrs={
             'class': 'form-control',
@@ -143,6 +144,11 @@ class ContributionForm(forms.Form):
             'placeholder': _('Last name'),
             'class': 'form-control'
         })
+    )
+    public = forms.BooleanField(
+        required=False,
+        label=_('Show my name as a public contributor'),
+        widget=BootstrapCheckboxInput
     )
     address = forms.CharField(
         max_length=255,
@@ -196,6 +202,17 @@ class ContributionForm(forms.Form):
         initial=PAYMENT_METHODS[0][0]
     )
 
+    terms = forms.BooleanField(
+        widget=BootstrapCheckboxInput,
+        required=True,
+        label=_('Accept our terms for crowdfunding.'),
+        error_messages={
+            'required': _(
+                'You need to accept our Terms '
+                'and Conditions and Priavcy Statement.'
+            )},
+    )
+
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         self.crowdfunding = kwargs.pop('crowdfunding', None)
@@ -237,6 +254,7 @@ class ContributionForm(forms.Form):
             user=self.user,
             amount=self.cleaned_data['amount'],
             note=self.cleaned_data['note'],
-            order=order
+            public=self.cleaned_data['public'],
+            order=order,
         )
         return contribution
