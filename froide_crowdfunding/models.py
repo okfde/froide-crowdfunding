@@ -124,8 +124,8 @@ class Contribution(models.Model):
         ('failed', _('Failed')),
     )
     STATUS_COLORS = {
-        '': 'dark',
-        'pending': 'danger',
+        '': 'secondary',
+        'pending': 'light',
         'success': 'success',
         'failed': 'danger',
     }
