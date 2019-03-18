@@ -108,9 +108,25 @@ class Contribution(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
     amount = models.DecimalField(decimal_places=2, max_digits=10)
     note = models.TextField(blank=True)
+    public = models.BooleanField(default=False)
     order = models.OneToOneField(
         'froide_payment.Order', null=True, blank=True,
         on_delete=models.SET_NULL
+    )
+    STATUS_CHOICES = (
+        ('', _('Waiting for input')),
+        ('pending', _('Processing...')),
+        ('success', _('Successful')),
+        ('failed', _('Failed')),
+    )
+    STATUS_COLORS = {
+        '': 'dark',
+        'pending': 'danger',
+        'success': 'success',
+        'failed': 'danger',
+    }
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default=''
     )
 
     class Meta:
