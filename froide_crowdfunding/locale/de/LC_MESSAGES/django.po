@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-18 16:50+0100\n"
-"PO-Revision-Date: 2019-03-18 17:04+0100\n"
+"PO-Revision-Date: 2019-03-19 14:30+0100\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -149,7 +149,7 @@ msgstr "Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen akzeptieren."
 
 #: forms.py:248
 msgid "Contribution to Crowdfunding “{}”"
-msgstr "Beiträge zur Crowdfunding-Kampagne “{}”"
+msgstr "Beitrag zum Crowdfunding “{}”"
 
 #: models.py:21
 msgid "needs approval"
