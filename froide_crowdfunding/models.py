@@ -142,11 +142,20 @@ class Contribution(models.Model):
     def __str__(self):
         return 'Contribution %s' % self.pk
 
+    def get_absolute_url(self):
+        return self.order.get_absolute_url()
+
+    def get_finish_url(self, state='success'):
+        return '{}?result={}'.format(
+            self.get_absolute_url(),
+            state,
+        )
+
     def get_success_url(self):
-        return '/?success'
+        return self.get_finish_url('success')
 
     def get_failure_url(self):
-        return '/?failure'
+        return self.get_finish_url('failure')
 
     @property
     def status_color(self):

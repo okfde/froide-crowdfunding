@@ -29,21 +29,35 @@
         {% for contribution in contributions %}
           <li class="list-group-item {% if contribution.user == request.user %}list-group-item-{{ contribution.status_color }}{% endif %}">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">{{ contribution.amount }} €</h5>
-              <small>{{ contribution.timestamp|timesince }}</small>
+              <h5 class="mb-1">
+                {{ contribution.amount }} €
+                {% if contribution.status != 'success' %}
+                  <small>{{ contribution.get_status_display }}</small>
+                {% endif %}
+              </h5>
+              <time datetime="{{ contribution.timestamp|date:'c' }}">
+                {{ contribution.timestamp|timesince }}
+              </time>
             </div>
             {% if contribution.note %}
               <p class="mb-1">{{ contribution.note|linebreaksbr }}</p>
             {% endif %}
-            {% if contribution.public %}
-              <small>
-                {{ contribution.first_name }} {{ contribution.last_name }}
-              </small>
-            {% elif contribution.user == request.user %}
-              <small>
-                {% trans "from you (name not public)" %}
-              </small>
-            {% endif %}
+            <div class="d-flex w-100 justify-content-between">
+              {% if contribution.public %}
+                <small>
+                  {{ contribution.first_name }} {{ contribution.last_name }}
+                </small>
+              {% elif contribution.user == request.user %}
+                <small>
+                  {% trans "from you (name not public)" %}
+                </small>
+              {% endif %}
+              {% if contribution.user == request.user or request.user.is_superuser %}
+                <a href="{{ contribution.get_absolute_url }}">
+                  {% trans "Show details" %}
+                </a>
+              {% endif %}
+            </div>
           </li>
         {% endfor %}
       </ul>

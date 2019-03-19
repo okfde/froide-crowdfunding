@@ -12,6 +12,6 @@ urlpatterns = [
         name='crowdfunding-start_contribution'),
     url(r'^request/(?P<pk>\d+)/$', request_crowdfunding,
         name='crowdfunding-request'),
-    url(r'^c/(?P<slug>[\w-]+)/$', CrowdfundingDetailView.as_view(),
+    url(r'^campaign/(?P<slug>[\w-]+)/$', CrowdfundingDetailView.as_view(),
         name='crowdfunding-detail'),
 ]

@@ -1,0 +1,20 @@
+{% extends "froide_payment/order/default.html" %}
+
+{% load i18n %}
+
+{% block domain_block %}
+
+<p class="lead">
+{% blocktrans with title=object.crowdfunding.title url=object.crowdfunding.get_absolute_url %}
+This is contribution to the crowdfunding campaign “<a href="{{ url }}">{{ title }}</a>”.
+{% endblocktrans %}
+</p>
+
+<p>
+  {% trans "Status of your contribution is: "%}
+  <span class="text-{{ object.status_color }}">
+  {{ object.get_status_display }}
+  </span>
+</p>
+
+{% endblock %}
