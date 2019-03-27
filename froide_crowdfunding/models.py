@@ -143,7 +143,9 @@ class Contribution(models.Model):
         return 'Contribution %s' % self.pk
 
     def get_absolute_url(self):
-        return self.order.get_absolute_url()
+        if self.order:
+            return self.order.get_absolute_url()
+        return self.crowdfunding.get_absolute_url()
 
     def get_finish_url(self, state='success'):
         return '{}?result={}'.format(
