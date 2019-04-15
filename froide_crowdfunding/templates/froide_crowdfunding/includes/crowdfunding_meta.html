@@ -25,16 +25,24 @@
 <p class="lead">
   {% if crowdfunding.user.private %}
     {% blocktrans with amount=crowdfunding.amount_needed %}
-      This user is crowdfunding <strong>{{ amount }}&nbsp;€</strong> for this purpose:
+      This user is crowdfunding <strong>{{ amount }}&nbsp;€</strong>.
     {% endblocktrans %}
   {% else %}
     {% blocktrans with amount=crowdfunding.amount_needed name=crowdfunding.user.get_full_name %}
-      {{ name }} is crowdfunding <strong>{{ amount }}&nbsp;€</strong> for this purpose:
+      {{ name }} is crowdfunding <strong>{{ amount }}&nbsp;€</strong>.
     {% endblocktrans %}
   {% endif %}
 </p>
+<h4>{% trans "Here's why this matters to the crowdfunder." %}</h4>
 <blockquote>
   <p class="card-text">
     {{ crowdfunding.description|linebreaksbr }}
+  </p>
+</blockquote>
+
+<h4>{% trans "Why this information is important to the public." %}</h4>
+<blockquote>
+  <p class="card-text">
+    {{ crowdfunding.public_interest|linebreaksbr }}
   </p>
 </blockquote>
