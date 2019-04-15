@@ -24,20 +24,11 @@
   {% endfor %}
 {% endwith %}
 
-{% with form=object|get_crowdfunding_start_form %}
-  {% if form %}
+{% with can_start=object|can_start_crowdfunding %}
+  {% if can_start %}
     <h4>{% trans "Start a crowdfunding campaign" %}</h4>
-    <form action="{% url 'crowdfunding:crowdfunding-request' pk=object.pk %}" method="post">
-      {% csrf_token %}
-      {% if crowdfunding_form %}
-        {% render_form crowdfunding_form %}
-      {% else %}
-        {% render_form form %}
-      {% endif %}
-      <button type="submit" class="btn btn-primary">
-        {% trans "Request crowdfunding campaign" %}
-      </button>
-    </form>
+    <a href="{% url 'crowdfunding:crowdfunding-request' pk=object.pk %}" class="btn btn-primary">
+      {% trans "Provide your details" %}
+    </a>
   {% endif %}
 {% endwith %}
-

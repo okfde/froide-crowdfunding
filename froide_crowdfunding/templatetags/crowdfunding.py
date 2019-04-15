@@ -2,8 +2,7 @@ from django import template
 
 from ..models import Crowdfunding
 from ..forms import (
-    CrowdfundingRequestStartForm, can_start_crowdfunding,
-    ContributionForm
+    can_start_crowdfunding, ContributionForm
 )
 
 register = template.Library()
@@ -26,14 +25,10 @@ def get_crowdfundings(foirequest, status=None):
     return crowdfundings
 
 
-@register.filter
-def get_crowdfunding_start_form(foirequest):
+@register.filter(name='can_start_crowdfunding')
+def can_start_crowdfunding_filter(foirequest):
     crowdfundings = get_foirequest_crowdfunding(foirequest)
-    if not can_start_crowdfunding(crowdfundings):
-        return None
-    return CrowdfundingRequestStartForm(
-        foirequest=foirequest, crowdfundings=crowdfundings
-    )
+    return can_start_crowdfunding(crowdfundings)
 
 
 @register.filter

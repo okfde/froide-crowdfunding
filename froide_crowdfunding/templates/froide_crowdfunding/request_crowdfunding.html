@@ -1,0 +1,23 @@
+{% extends CMS_TEMPLATE %}
+
+{% load i18n %}
+{% load form_helper %}
+
+{% block app_body %}
+  <div class="container">
+
+    {% block conditions %}{% endblock %}
+
+    <div class="row mt-5 mb-5">
+      <div class="col-md-8">
+        <form action="{% url 'crowdfunding:crowdfunding-request' pk=object.pk %}" method="post">
+          {% csrf_token %}
+          {% render_form crowdfunding_form %}
+          <button type="submit" class="btn btn-primary">
+            {% trans "Request crowdfunding campaign" %}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

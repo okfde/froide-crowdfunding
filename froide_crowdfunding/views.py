@@ -4,14 +4,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
-from django.views.decorators.http import require_POST
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Case, When, Value, BooleanField, Q
 
 from froide.foirequest.models import FoiRequest
 from froide.foirequest.auth import can_write_foirequest
-from froide.foirequest.views.request import show_foirequest
 from froide.helper.utils import render_403
 
 from .models import Crowdfunding
@@ -60,32 +58,43 @@ class CrowdfundingDetailView(UserPassesTestMixin, DetailView):
         return context
 
 
-@require_POST
 def request_crowdfunding(request, pk):
     foirequest = get_object_or_404(FoiRequest, pk=pk)
     if not can_write_foirequest(foirequest, request):
         return render_403(request)
 
     crowdfundings = Crowdfunding.objects.filter(request=foirequest)
-    form = CrowdfundingRequestStartForm(
-        data=request.POST, crowdfundings=crowdfundings,
-        user=request.user, foirequest=foirequest
-    )
-    if form.is_valid():
-        form.save()
-        messages.add_message(
-            request, messages.SUCCESS,
-            _('Your crowdfunding campaign has been submitted for approval.')
+    if request.method == 'POST':
+        form = CrowdfundingRequestStartForm(
+            data=request.POST, crowdfundings=crowdfundings,
+            user=request.user, foirequest=foirequest
         )
-        return redirect(foirequest)
-    messages.add_message(
-        request, messages.ERROR,
-        _('Your form contained errors.')
+        if form.is_valid():
+            form.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                _('Your crowdfunding campaign '
+                  'has been submitted for approval.')
+            )
+            return redirect(foirequest)
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                _('Your form contained errors.')
+            )
+    else:
+        form = CrowdfundingRequestStartForm(
+            crowdfundings=crowdfundings,
+            user=request.user, foirequest=foirequest
+        )
+    return render(
+        request,
+        'froide_crowdfunding/request_crowdfunding.html',
+        context={
+            "crowdfunding_form": form,
+            'object': foirequest,
+        }
     )
-    return show_foirequest(request, foirequest, context={
-        "crowdfunding_form": form,
-        'active_tab': 'crowdfunding'
-    }, status=400)
 
 
 def start_contribution(request, pk):
