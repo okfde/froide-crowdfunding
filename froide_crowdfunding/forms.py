@@ -1,3 +1,5 @@
+from decimal import Decimal
+import math
 import re
 
 from django import forms
@@ -11,13 +13,20 @@ from froide_payment.models import Order, PAYMENT_METHODS
 from .models import OVERHEAD_FACTOR, Crowdfunding, Contribution
 
 
+POSTCODE_RE = re.compile('(\d{5})\s+(.*)')
+
+
 def can_start_crowdfunding(crowdfundings):
     if any(c.status != 'finished' for c in crowdfundings):
         return False
     return True
 
 
-POSTCODE_RE = re.compile('(\d{5})\s+(.*)')
+def calculate_amount_needed(amount_requested):
+    amount_needed = amount_requested * OVERHEAD_FACTOR
+    # Round up to next 10
+    amount_needed = math.ceil(amount_needed / 10) * 10
+    return Decimal(amount_needed)
 
 
 def parse_address(address):
@@ -50,28 +59,53 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
     )
 
     description = forms.CharField(
-        label=_('Description'),
+        label=_('What is your interest in this information?'),
         help_text=_(
-            'Describe why getting the information is important and '
-            'why people should help.'),
+            'Describe why getting the information is important '
+            'to you.'),
         widget=forms.Textarea(attrs={
             'class': 'form-control'
         })
     )
 
-    amount_requested = forms.FloatField(
+    public_interest = forms.CharField(
+        label=_('Why is this important to the public?'),
+        help_text=_(
+            'Describe how this case affects the public.'),
+        widget=forms.Textarea(attrs={
+            'class': 'form-control'
+        })
+    )
+
+    amount_requested = forms.DecimalField(
         label=_("Amount"),
-        initial=0.0,
+        initial=10,
         required=True, min_value=10,
+        decimal_places=2,
+        max_digits=10,
         localize=True,
         widget=PriceInput,
-        help_text=_('Please specify the amount you need to raise'
-                    ' (minimum 10 Euro).')
+        help_text=_('Please specify the amount you need to raise '
+                    '(minimum 10 Euro). We will increase this amount to '
+                    'cover our own costs.')
+    )
+
+    terms = forms.BooleanField(
+        widget=BootstrapCheckboxInput,
+        required=True,
+        label=_('Accept our terms for crowdfunding.'),
+        error_messages={
+            'required': _(
+                'You need to accept our crowdfunding terms.'
+            )},
     )
 
     class Meta:
         model = Crowdfunding
-        fields = ('title', 'kind', 'description', 'amount_requested',)
+        fields = (
+            'title', 'kind', 'description', 'public_interest',
+            'amount_requested',
+        )
 
     def __init__(self, *args, **kwargs):
         self.foirequest = kwargs.pop('foirequest', None)
@@ -100,17 +134,21 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
         crowdfunding = super(CrowdfundingRequestStartForm, self).save(**kwargs)
         crowdfunding.user = self.user
         crowdfunding.request = self.foirequest
-        amount_needed = crowdfunding.amount_requested * OVERHEAD_FACTOR
-        crowdfunding.amount_needed = amount_needed
+        # Calculate amount needed
+        crowdfunding.amount_needed = calculate_amount_needed(
+            crowdfunding.amount_requested
+        )
         save_obj_with_slug(crowdfunding)
         return crowdfunding
 
 
 class ContributionForm(forms.Form):
-    amount = forms.FloatField(
+    amount = forms.DecimalField(
         label=_("Amount"),
         initial=10.0,
         required=True, min_value=1,
+        decimal_places=2,
+        max_digits=10,
         localize=True,
         widget=PriceInput,
         help_text=_('Please specify the amount you want to contribute.')
