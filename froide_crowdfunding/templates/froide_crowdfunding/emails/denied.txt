@@ -1,0 +1,15 @@
+{% load i18n %}{% autoescape off %}{% blocktrans with name=user.get_full_name %}Hello {{ name }},{% endblocktrans %}
+
+{% blocktrans with title=crowdfunding.title feedback=crowdfunding.feedback url=crowdfunding.get_absolute_domain_url %}Unfortunately, your crowdfunding project “{{ title }}” could not be activated. Please review the following aspects of your campaign and adjust your project:
+
+{{ feedback }}
+
+{{ url }}
+
+When you are done, we will review your crowdfunding project again and we will let you know if it can be activated.
+{% endblocktrans %}
+{% blocktrans with site_name=SITE_NAME %}
+Cheers,
+{{ site_name }}
+{% endblocktrans %}{% endautoescape %}
+{% include "emails/footer.txt" %}

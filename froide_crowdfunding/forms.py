@@ -17,9 +17,21 @@ POSTCODE_RE = re.compile('(\d{5})\s+(.*)')
 
 
 def can_start_crowdfunding(crowdfundings):
-    if any(c.status != 'finished' for c in crowdfundings):
-        return False
-    return True
+    if all(c.status in Crowdfunding.FINAL_STATUS for c in crowdfundings):
+        return True
+    return False
+
+
+def get_editable_crowdfunding(crowdfundings):
+    editable = [
+        c for c in crowdfundings
+        if c.status in Crowdfunding.REVIEW_STATUS
+    ]
+    if not editable:
+        return None
+    if len(editable) > 1:
+        return None
+    return editable[0]
 
 
 def calculate_amount_needed(amount_requested):
@@ -55,6 +67,7 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
 
     kind = forms.ChoiceField(
         label=_('Kind of costs'),
+        choices=Crowdfunding.KIND_CHOICES,
         help_text=_('What area of your request would you like to crowdfund?')
     )
 
@@ -109,7 +122,11 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.foirequest = kwargs.pop('foirequest', None)
-        self.crowdfundings = kwargs.pop('crowdfundings', None)
+
+        self.crowdfundings = Crowdfunding.objects.filter(
+            request=self.foirequest
+        )
+        kwargs['instance'] = get_editable_crowdfunding(self.crowdfundings)
         self.user = kwargs.pop('user', None)
         super(CrowdfundingRequestStartForm, self).__init__(*args, **kwargs)
 
@@ -117,15 +134,10 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
             self.fields['title'].initial = self.foirequest.title
         if self.foirequest.costs:
             self.fields['amount_requested'].initial = self.foirequest.costs
-        if self.crowdfundings is not None:
-            existing_kinds = set(c.kind for c in self.crowdfundings)
-            self.fields['kind'].choices = [
-                c for c in Crowdfunding.KIND_CHOICES
-                if c[0] not in existing_kinds
-            ]
 
     def clean(self):
-        if not can_start_crowdfunding(self.crowdfundings):
+        can_start = can_start_crowdfunding(self.crowdfundings)
+        if not self.instance and not can_start:
             raise forms.ValidationError(_('You have an ongoing crowdfunding.'))
         return self.cleaned_data
 
@@ -138,7 +150,12 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
         crowdfunding.amount_needed = calculate_amount_needed(
             crowdfunding.amount_requested
         )
-        save_obj_with_slug(crowdfunding)
+        crowdfunding.status = 'needs_approval'
+        if crowdfunding.slug:
+
+            crowdfunding.save()
+        else:
+            save_obj_with_slug(crowdfunding)
         return crowdfunding
 
 

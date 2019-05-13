@@ -22,13 +22,19 @@ class Crowdfunding(models.Model):
         ('needs_approval', _('needs approval')),
         ('denied', _('denied')),
         ('running', _('running')),
+        ('successful', _('successful')),
+        ('failed', _('failed')),
         ('finished', _('finished')),
     )
+    FINAL_STATUS = ('finished', 'failed', 'successful')
+    REVIEW_STATUS = ('denied',)
     status = models.CharField(
         max_length=25,
         choices=STATUS_CHOICES,
         default='needs_approval'
     )
+    feedback = models.TextField(blank=True)
+
     KIND_CHOICES = (
         ('fees', _('fees')),
         ('appeal', _('appeal')),
@@ -83,6 +89,9 @@ class Crowdfunding(models.Model):
     def get_absolute_url(self):
         return reverse('crowdfunding:crowdfunding-detail',
                        kwargs={'slug': self.slug})
+
+    def get_absolute_domain_url(self):
+        return settings.SITE_URL + self.get_absolute_url()
 
     def get_start_contribution_url(self):
         return reverse('crowdfunding:crowdfunding-start_contribution',

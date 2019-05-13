@@ -2,7 +2,7 @@ from django import template
 
 from ..models import Crowdfunding
 from ..forms import (
-    can_start_crowdfunding, ContributionForm
+    can_start_crowdfunding, get_editable_crowdfunding, ContributionForm
 )
 
 register = template.Library()
@@ -29,6 +29,12 @@ def get_crowdfundings(foirequest, status=None):
 def can_start_crowdfunding_filter(foirequest):
     crowdfundings = get_foirequest_crowdfunding(foirequest)
     return can_start_crowdfunding(crowdfundings)
+
+
+@register.filter(name='get_editable_crowdfunding')
+def get_editable_crowdfunding_filter(foirequest):
+    crowdfundings = get_foirequest_crowdfunding(foirequest)
+    return get_editable_crowdfunding(crowdfundings)
 
 
 @register.filter

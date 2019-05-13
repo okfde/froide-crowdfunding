@@ -8,6 +8,16 @@
 
     {% block conditions %}{% endblock %}
 
+    {% if crowdfunding_form.instance.feedback %}
+      <h3>{% trans "You have received the following feedback" %}</h3>
+      <blockquote>
+        {{ crowdfunding_form.instance.feedback }}
+      </blockquote>
+      <p>
+        {% trans "Please adjust the details of your crowdfunding below." %}
+      </p>
+    {% endif %}
+
     <div class="row mt-5 mb-5">
       <div class="col-md-8">
         <form action="{% url 'crowdfunding:crowdfunding-request' pk=object.pk %}" method="post">

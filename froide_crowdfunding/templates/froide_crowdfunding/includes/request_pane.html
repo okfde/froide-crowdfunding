@@ -14,7 +14,7 @@
       </p>
     {% elif crowdfunding.status == "denied" %}
       <p>
-        {% trans "This crowdfunding has been denied." %}
+        {% trans "This crowdfunding has received feedback and needs your review." %}
       </p>
     {% elif crowdfunding.status == "finished" %}
       {% trans "This crowdfunding has finished." %}
@@ -24,11 +24,15 @@
   {% endfor %}
 {% endwith %}
 
-{% with can_start=object|can_start_crowdfunding %}
+{% with can_start=object|can_start_crowdfunding can_edit=object|get_editable_crowdfunding %}
   {% if can_start %}
     <h4>{% trans "Start a crowdfunding campaign" %}</h4>
     <a href="{% url 'crowdfunding:crowdfunding-request' pk=object.pk %}" class="btn btn-primary">
       {% trans "Provide your details" %}
+    </a>
+  {% elif can_edit %}
+    <a href="{% url 'crowdfunding:crowdfunding-request' pk=object.pk %}" class="btn btn-primary">
+      {% trans "Review feedback" %}
     </a>
   {% endif %}
 {% endwith %}

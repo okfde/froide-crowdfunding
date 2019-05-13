@@ -12,9 +12,13 @@ class FroideCrowdfundingConfig(AppConfig):
         from payments.signals import status_changed
         from froide.account.menu import menu_registry, MenuItem
 
-        from .listeners import payment_status_changed
+        from . import contribution_successful
+        from .listeners import (
+            payment_status_changed, send_contribution_notification
+        )
 
         status_changed.connect(payment_status_changed)
+        contribution_successful.connect(send_contribution_notification)
 
         @menu_registry.register
         def get_campaign_menu_item(request):

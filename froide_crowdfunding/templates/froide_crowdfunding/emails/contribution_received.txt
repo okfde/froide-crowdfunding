@@ -1,0 +1,16 @@
+{% load i18n %}{% autoescape off %}{% blocktrans with name=user.get_full_name %}Hello {{ name }},{% endblocktrans %}
+
+{% blocktrans with title=crowdfunding.title url=url %}your contribution to the crowdfunding project “{{ title }}” has been received.
+
+You can find details about your contribution here:
+
+{{ url }}
+
+It would help this crowdfunding, if you promote it to your friends and family.
+Thank you for your support!
+{% endblocktrans %}
+{% blocktrans with site_name=SITE_NAME %}
+Cheers,
+{{ site_name }}
+{% endblocktrans %}{% endautoescape %}
+{% include "emails/footer.txt" %}

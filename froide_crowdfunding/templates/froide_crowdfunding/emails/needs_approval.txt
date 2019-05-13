@@ -1,0 +1,15 @@
+{% load i18n %}{% autoescape off %}{% blocktrans with name=user.get_full_name %}Hello {{ name }},{% endblocktrans %}
+
+{% blocktrans with title=crowdfunding.title url=crowdfunding.get_absolute_domain_url %}your crowdfunding project “{{ title }}” was created successfully. You can find the project here:
+
+{{ url }}
+
+We are now checking your project. We will get back to you in one week and notify you if your crowdfunding project has been activated.
+
+If you have further questions, please contact us.
+{% endblocktrans %}
+{% blocktrans with site_name=SITE_NAME %}
+Cheers,
+{{ site_name }}
+{% endblocktrans %}{% endautoescape %}
+{% include "emails/footer.txt" %}
