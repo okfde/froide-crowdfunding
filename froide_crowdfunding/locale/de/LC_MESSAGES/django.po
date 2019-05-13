@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 13:05+0200\n"
-"PO-Revision-Date: 2019-04-15 13:20+0200\n"
+"POT-Creation-Date: 2019-05-13 13:07+0200\n"
+"PO-Revision-Date: 2019-05-13 13:12+0200\n"
 "Last-Translator: Stefan Wehrmeyer <stefan.wehrmeyer@okfn.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,11 +18,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2\n"
 
+#: admin.py:31
+msgid "💸 Your crowdfunding project needs review"
+msgstr "💸 Crowdfunding-Projekt zu überprüfen"
+
+#: admin.py:40
+msgid "💸 Your crowdfunding project has been activated"
+msgstr "💸 Crowdfunding-Projekt live"
+
 #: apps.py:8
 msgid "Froide Crowdfunding App"
 msgstr "Froide Crowdfunding-App"
 
-#: apps.py:27
+#: apps.py:31
 msgid "Your crowdfundings"
 msgstr "Ihre Crowdfunding-Kampagnen"
 
@@ -30,43 +38,43 @@ msgstr "Ihre Crowdfunding-Kampagnen"
 msgid "Crowdfunding CMS App"
 msgstr "Crowdfunding CMS App"
 
-#: forms.py:49
+#: forms.py:61
 msgid "Title"
 msgstr "Titel"
 
-#: forms.py:51
+#: forms.py:63
 msgid "Title of campaign"
 msgstr "Titel der Crowdfunding-Kampagne"
 
-#: forms.py:57
+#: forms.py:69
 msgid "Kind of costs"
 msgstr "Art der Kosten"
 
-#: forms.py:58
+#: forms.py:71
 msgid "What area of your request would you like to crowdfund?"
 msgstr "Für welchen Bereich Ihrer Anfrage würden Sie gerne sammeln?"
 
-#: forms.py:62
+#: forms.py:75
 msgid "What is your interest in this information?"
 msgstr "Warum interessieren Sie sich für diese Information?"
 
-#: forms.py:64
+#: forms.py:77
 msgid "Describe why getting the information is important to you."
 msgstr "Beschreiben Sie, warum Sie die Informationen haben wollen."
 
-#: forms.py:72
+#: forms.py:85
 msgid "Why is this important to the public?"
 msgstr "Warum ist das wichtig für die Öffentlichkeit?"
 
-#: forms.py:74
+#: forms.py:87
 msgid "Describe how this case affects the public."
 msgstr "Beschreiben Sie, was die Öffentlichkeit von der Information hat."
 
-#: forms.py:81 forms.py:147
+#: forms.py:94 forms.py:164
 msgid "Amount"
 msgstr "Betrag"
 
-#: forms.py:88
+#: forms.py:101
 msgid ""
 "Please specify the amount you need to raise (minimum 10 Euro). We will "
 "increase this amount to cover our own costs."
@@ -75,27 +83,27 @@ msgstr ""
 "Euro). Wir erhöhen diesen Betrag automatisch, um unsere eigenen Kosten zu "
 "decken."
 
-#: forms.py:96 forms.py:246
+#: forms.py:109 forms.py:263
 msgid "Accept our terms for crowdfunding."
 msgstr "Bedingungen der Crowdfunding-Kampagne akzeptieren."
 
-#: forms.py:99
+#: forms.py:112
 msgid "You need to accept our crowdfunding terms."
 msgstr "Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen akzeptieren."
 
-#: forms.py:129
+#: forms.py:141
 msgid "You have an ongoing crowdfunding."
 msgstr "SIe haben ein laufendes Crowdfunding."
 
-#: forms.py:154
+#: forms.py:171
 msgid "Please specify the amount you want to contribute."
 msgstr "Bitte geben Sie den Betrag an, den Sie beitragen können."
 
-#: forms.py:158
+#: forms.py:175
 msgid "Note"
 msgstr "Nachricht"
 
-#: forms.py:162
+#: forms.py:179
 msgid ""
 "Leave an optional public note (260 chars) why you are supporting this "
 "crowdfunding."
@@ -103,65 +111,69 @@ msgstr ""
 "Eine öffentliche Nachricht (260 Zeichen) hinterlassen, warum Sie diese "
 "Crowdfunding-Kampagne unterstützen."
 
-#: forms.py:172 forms.py:174
+#: forms.py:189 forms.py:191
 msgid "First name"
 msgstr "Vorname"
 
-#: forms.py:180 forms.py:182
+#: forms.py:197 forms.py:199
 msgid "Last name"
 msgstr "Nachname"
 
-#: forms.py:188
+#: forms.py:205
 msgid "Show my name as a public contributor"
 msgstr "Ihren Namen öffentlich am Beitrag anzeigen"
 
-#: forms.py:193 forms.py:195
+#: forms.py:210 forms.py:212
 msgid "Address"
 msgstr "Adresse"
 
-#: forms.py:201 forms.py:203
+#: forms.py:218 forms.py:220
 msgid "Postcode"
 msgstr "Postleitzahl"
 
-#: forms.py:209 forms.py:211
+#: forms.py:226 forms.py:228
 msgid "City"
 msgstr "Stadt"
 
-#: forms.py:216
+#: forms.py:233
 msgid "Country"
 msgstr "Land"
 
-#: forms.py:218
+#: forms.py:235
 msgid "Germany"
 msgstr "Deutschland"
 
-#: forms.py:219
+#: forms.py:236
 msgid "Austria"
 msgstr "Österreich"
 
-#: forms.py:220
+#: forms.py:237
 msgid "Switzerland"
 msgstr "Schweiz"
 
-#: forms.py:229
+#: forms.py:246
 msgid "Email"
 msgstr "E-Mail"
 
-#: forms.py:231
+#: forms.py:248
 msgid "Your email address"
 msgstr "Ihre E-Mail-Adresse"
 
-#: forms.py:237
+#: forms.py:254
 msgid "Payment method"
 msgstr "Zahlungsmethode"
 
-#: forms.py:249
+#: forms.py:266
 msgid "You need to accept our Terms and Conditions and Priavcy Statement."
 msgstr "Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen akzeptieren."
 
-#: forms.py:286
+#: forms.py:303
 msgid "Contribution to Crowdfunding “{}”"
 msgstr "Beitrag zum Crowdfunding “{}”"
+
+#: listeners.py:49
+msgid "💸 Your crowdfunding contribution has been received"
+msgstr "💸 Spende für Crowdfunding-Projekt eingetroffen"
 
 #: models.py:22
 msgid "needs approval"
@@ -176,56 +188,64 @@ msgid "running"
 msgstr "läuft"
 
 #: models.py:25
+msgid "successful"
+msgstr "erfolgreich"
+
+#: models.py:26
+msgid "failed"
+msgstr "fehlgeschlagen"
+
+#: models.py:27
 msgid "finished"
 msgstr "abgeschlossen"
 
-#: models.py:33
+#: models.py:39
 msgid "fees"
 msgstr "Gebühren"
 
-#: models.py:34
+#: models.py:40
 msgid "appeal"
 msgstr "Widerspruch"
 
-#: models.py:35
+#: models.py:41
 msgid "lawsuit"
 msgstr "Klage"
 
-#: models.py:36
+#: models.py:42
 msgid "other"
 msgstr "andere"
 
-#: models.py:71 templates/froide_crowdfunding/detail.html:9
+#: models.py:77 templates/froide_crowdfunding/detail.html:9
 #: templates/froide_crowdfunding/includes/crowdfunding_form.html:8
 #: templates/froide_crowdfunding/includes/request_pane.html:5
 msgid "Crowdfunding"
 msgstr "Crowdfunding-Kampagne"
 
-#: models.py:72
+#: models.py:78
 msgid "Crowdfundings"
 msgstr "Crowdfunding-Kampagnen"
 
-#: models.py:122
+#: models.py:131
 msgid "Waiting for input"
 msgstr "Warte auf Eingabe"
 
-#: models.py:123
+#: models.py:132
 msgid "Processing..."
 msgstr "In Bearbeitung..."
 
-#: models.py:124
+#: models.py:133
 msgid "Successful"
 msgstr "Erfolgreich"
 
-#: models.py:125
+#: models.py:134
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
-#: models.py:140
+#: models.py:149
 msgid "Contribution"
 msgstr "Beitrag"
 
-#: models.py:141 templates/froide_crowdfunding/detail.html:27
+#: models.py:150 templates/froide_crowdfunding/detail.html:27
 msgid "Contributions"
 msgstr "Beiträge"
 
@@ -240,6 +260,124 @@ msgstr "von Ihnen (Name nicht öffentlich)"
 #: templates/froide_crowdfunding/detail.html:57
 msgid "Show details"
 msgstr "Zeige Details"
+
+#: templates/froide_crowdfunding/emails/contribution_received.txt:1
+#: templates/froide_crowdfunding/emails/denied.txt:1
+#: templates/froide_crowdfunding/emails/needs_approval.txt:1
+#: templates/froide_crowdfunding/emails/running.txt:1
+#, python-format
+msgid "Hello %(name)s,"
+msgstr "Hallo %(name)s,"
+
+#: templates/froide_crowdfunding/emails/contribution_received.txt:3
+#, python-format
+msgid ""
+"your contribution to the crowdfunding project “%(title)s” has been "
+"received.\n"
+"\n"
+"You can find details about your contribution here:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"It would help this crowdfunding, if you promote it to your friends and "
+"family.\n"
+"Thank you for your support!\n"
+msgstr ""
+"Ihre Spende für das Crowdfunding-Projekt „%(title)s“ ist bei uns erfolgreich "
+"eingegangen. \n"
+"\n"
+"Unter folgendem Link finden Sie einen Überblick über Ihre geleisteten "
+"Beiträge: \n"
+"\n"
+"%(url)s\n"
+"\n"
+"Um die Kamapgne noch bekannter zu machen und die angestrebte Summe zu "
+"erreichen, erzählen Sie Freunden und Bekannten davon. \n"
+"Vielen Dank für Ihre Unterstützung!\n"
+
+#: templates/froide_crowdfunding/emails/contribution_received.txt:12
+#: templates/froide_crowdfunding/emails/denied.txt:11
+#: templates/froide_crowdfunding/emails/needs_approval.txt:11
+#: templates/froide_crowdfunding/emails/running.txt:10
+#, python-format
+msgid ""
+"\n"
+"Cheers,\n"
+"%(site_name)s\n"
+msgstr ""
+"\n"
+"Beste Grüße,\n"
+"%(site_name)s\n"
+
+#: templates/froide_crowdfunding/emails/denied.txt:3
+#, python-format
+msgid ""
+"Unfortunately, your crowdfunding project “%(title)s” could not be activated. "
+"Please review the following aspects of your campaign and adjust your "
+"project:\n"
+"\n"
+"%(feedback)s\n"
+"\n"
+"%(url)s\n"
+"\n"
+"When you are done, we will review your crowdfunding project again and we "
+"will let you know if it can be activated.\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ konnte nicht freigeschaltet werden. "
+"Bitte überprüfen und korrigieren Sie folgende Bereiche Ihrer Kampagne: \n"
+"\n"
+"%(feedback)s\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Daraufhin werden wir Ihre Korrekturen nochmals prüfen. Im Anschluss erhalten "
+"Sie eine E-Mail, ob das Crowdfunding-Projekt freigeschaltet werden konnte.\n"
+
+#: templates/froide_crowdfunding/emails/needs_approval.txt:3
+#, python-format
+msgid ""
+"your crowdfunding project “%(title)s” was created successfully. You can find "
+"the project here:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"We are now checking your project. We will get back to you in one week and "
+"notify you if your crowdfunding project has been activated.\n"
+"\n"
+"If you have further questions, please contact us.\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich erstellt. Unter "
+"folgendem Link können Sie das Projekt einsehen: \n"
+"\n"
+"%(url)s\n"
+"\n"
+"Im Folgenden wird FragDenStaat das Projekt innerhalb einer Woche prüfen. \n"
+"Anschließend erhalten Sie von uns eine weitere Benachrichtigung, ob das "
+"Projekt freigeschaltet wurde.\n"
+"\n"
+"Sollten Sie weitere Fragen haben, können Sie uns gerne kontaktieren.\n"
+
+#: templates/froide_crowdfunding/emails/running.txt:3
+#, python-format
+msgid ""
+"your crowdfunding project “%(title)s” is now active and can be funded by the "
+"public. You can find the project here:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Please promote your crowdfunding project on social media and via other "
+"channels, so it can reach the requested amount.\n"
+"We will keep you informed about the progress.\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich freigeschaltet und "
+"ist nun für Andere einsehbar.\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Bewerben Sie in den kommenden Wochen Ihr Projekt auf möglichst vielen "
+"Kanälen, um die angestrebte Summe zu erzielen. \n"
+"Wir werden Sie in den folgenden Wochen über den Stand Ihrer Kampagne "
+"informieren. \n"
 
 #: templates/froide_crowdfunding/includes/crowdfunding_form.html:55
 msgid "Next step &rarr;"
@@ -280,8 +418,9 @@ msgid "This crowdfunding is waiting for approval."
 msgstr "Diese Crowdfunding-Kampagne wartet auf Freigabe."
 
 #: templates/froide_crowdfunding/includes/request_pane.html:17
-msgid "This crowdfunding has been denied."
-msgstr "Diese Crowdfunding-Kampagne wurde abgelehnt."
+msgid "This crowdfunding has received feedback and needs your review."
+msgstr ""
+"Diese Crowdfunding-Kampagne hat Feedback erhalten und muss angepasst werden."
 
 #: templates/froide_crowdfunding/includes/request_pane.html:20
 msgid "This crowdfunding has finished."
@@ -299,7 +438,19 @@ msgstr "Starten Sie eine Crowdfunding-Kampagne"
 msgid "Provide your details"
 msgstr "Geben Sie Ihre Angaben ein"
 
+#: templates/froide_crowdfunding/includes/request_pane.html:35
+msgid "Review feedback"
+msgstr "Feedback ansehen"
+
+#: templates/froide_crowdfunding/request_crowdfunding.html:12
+msgid "You have received the following feedback"
+msgstr "Sie haben folgendes Feedback erhalten"
+
 #: templates/froide_crowdfunding/request_crowdfunding.html:17
+msgid "Please adjust the details of your crowdfunding below."
+msgstr "Bitte passen Sie die Detail Ihres Crowdfunding-Projekts an."
+
+#: templates/froide_crowdfunding/request_crowdfunding.html:27
 msgid "Request crowdfunding campaign"
 msgstr "Crowdfunding-Kampagne einreichen"
 
@@ -318,11 +469,19 @@ msgstr ""
 msgid "Status of your contribution is: "
 msgstr "Status Ihres Beitrag ist: "
 
-#: views.py:76
+#: views.py:78
 msgid "Your crowdfunding campaign has been submitted for approval."
 msgstr "Ihre Crowdfunding-Kampagne wurde eingereicht und wartet auf Freigabe."
 
-#: views.py:83
+#: views.py:89
+msgid "💸 Your crowdfunding project has been created"
+msgstr "💸 Crowdfunding-Projekt erstellt"
+
+#: views.py:95
+msgid "Crowdfunding project needs approval"
+msgstr "Crowdfunding-Projekt braucht Genehmigung"
+
+#: views.py:105
 msgid "Your form contained errors."
 msgstr "Das Formular enthielt Fehler."
 
