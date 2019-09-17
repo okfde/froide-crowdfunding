@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from payments import PaymentStatus
+from froide_payment.models import PaymentStatus
 
 from froide.helper.email_sending import send_template_email
 
