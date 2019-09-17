@@ -1,0 +1,13 @@
+{% load i18n %}{% autoescape off %}{% blocktrans with name=user.get_full_name %}Hello {{ name }},{% endblocktrans %}
+
+{% blocktrans with title=crowdfunding.title url=crowdfunding.get_absolute_domain_url %}Your crowdfunding project “{{ title }}” has been reviewed and is now active. You can find it here:
+
+{{ url }}
+
+Now is the time to spread the word and gather support!
+{% endblocktrans %}
+{% blocktrans with site_name=SITE_NAME %}
+Cheers,
+{{ site_name }}
+{% endblocktrans %}{% endautoescape %}
+{% include "emails/footer.txt" %}
