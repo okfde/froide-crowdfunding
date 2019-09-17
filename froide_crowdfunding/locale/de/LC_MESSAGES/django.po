@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-13 13:07+0200\n"
-"PO-Revision-Date: 2019-05-13 13:12+0200\n"
+"POT-Creation-Date: 2019-09-17 16:51+0200\n"
+"PO-Revision-Date: 2019-09-17 16:54+0200\n"
 "Last-Translator: Stefan Wehrmeyer <stefan.wehrmeyer@okfn.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -225,27 +225,31 @@ msgstr "Crowdfunding-Kampagne"
 msgid "Crowdfundings"
 msgstr "Crowdfunding-Kampagnen"
 
-#: models.py:131
+#: models.py:80
+msgid "Can use crowdfunding"
+msgstr "Kann Crowdfunding nutzen"
+
+#: models.py:134
 msgid "Waiting for input"
 msgstr "Warte auf Eingabe"
 
-#: models.py:132
+#: models.py:135
 msgid "Processing..."
 msgstr "In Bearbeitung..."
 
-#: models.py:133
+#: models.py:136
 msgid "Successful"
 msgstr "Erfolgreich"
 
-#: models.py:134
+#: models.py:137
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
-#: models.py:149
+#: models.py:152
 msgid "Contribution"
 msgstr "Beitrag"
 
-#: models.py:150 templates/froide_crowdfunding/detail.html:27
+#: models.py:153 templates/froide_crowdfunding/detail.html:27
 msgid "Contributions"
 msgstr "Beiträge"
 
@@ -262,6 +266,7 @@ msgid "Show details"
 msgstr "Zeige Details"
 
 #: templates/froide_crowdfunding/emails/contribution_received.txt:1
+#: templates/froide_crowdfunding/emails/created.txt:1
 #: templates/froide_crowdfunding/emails/denied.txt:1
 #: templates/froide_crowdfunding/emails/needs_approval.txt:1
 #: templates/froide_crowdfunding/emails/running.txt:1
@@ -296,6 +301,7 @@ msgstr ""
 "Vielen Dank für Ihre Unterstützung!\n"
 
 #: templates/froide_crowdfunding/emails/contribution_received.txt:12
+#: templates/froide_crowdfunding/emails/created.txt:9
 #: templates/froide_crowdfunding/emails/denied.txt:11
 #: templates/froide_crowdfunding/emails/needs_approval.txt:11
 #: templates/froide_crowdfunding/emails/running.txt:10
@@ -308,6 +314,26 @@ msgstr ""
 "\n"
 "Beste Grüße,\n"
 "%(site_name)s\n"
+
+#: templates/froide_crowdfunding/emails/created.txt:3
+#, python-format
+msgid ""
+"Your crowdfunding project “%(title)s” has been reviewed and is now active. "
+"You can find it here:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Now is the time to spread the word and gather support!\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich freigeschaltet und "
+"ist nun für Andere einsehbar. Sie können es hier finden:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Bewerben Sie in den kommenden Wochen Ihr Projekt auf möglichst vielen "
+"Kanälen, um die angestrebte Summe zu erzielen. \n"
+"Wir werden Sie in den folgenden Wochen über den Stand Ihrer Kampagne "
+"informieren.\n"
 
 #: templates/froide_crowdfunding/emails/denied.txt:3
 #, python-format
@@ -469,19 +495,19 @@ msgstr ""
 msgid "Status of your contribution is: "
 msgstr "Status Ihres Beitrag ist: "
 
-#: views.py:78
+#: views.py:79
 msgid "Your crowdfunding campaign has been submitted for approval."
 msgstr "Ihre Crowdfunding-Kampagne wurde eingereicht und wartet auf Freigabe."
 
-#: views.py:89
+#: views.py:90
 msgid "💸 Your crowdfunding project has been created"
 msgstr "💸 Crowdfunding-Projekt erstellt"
 
-#: views.py:95
+#: views.py:96
 msgid "Crowdfunding project needs approval"
 msgstr "Crowdfunding-Projekt braucht Genehmigung"
 
-#: views.py:105
+#: views.py:106
 msgid "Your form contained errors."
 msgstr "Das Formular enthielt Fehler."
 
