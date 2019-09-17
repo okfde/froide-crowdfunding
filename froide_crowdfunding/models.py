@@ -76,6 +76,9 @@ class Crowdfunding(models.Model):
         get_latest_by = 'date_requested'
         verbose_name = _('Crowdfunding')
         verbose_name_plural = _('Crowdfundings')
+        permissions = (
+            ("can_crowdfund", _("Can use crowdfunding")),
+        )
 
     def __str__(self):
         return 'Crowdfunding "%s" (#%s)' % (self.title, self.pk)

@@ -24,11 +24,15 @@ from .forms import (
 logger = logging.getLogger(__name__)
 
 
-class CrowdfundingListView(UserPassesTestMixin, ListView):
-    template_name = 'froide_crowdfunding/list.html'
-
+class CrowdfundingAuthMixin(UserPassesTestMixin):
     def get_test_func(self):
-        return lambda: self.request.user.is_staff
+        return lambda: self.request.user.has_perm(
+            'froide_crowdfunding.can_crowdfund'
+        )
+
+
+class CrowdfundingListView(CrowdfundingAuthMixin, ListView):
+    template_name = 'froide_crowdfunding/list.html'
 
     def get_queryset(self):
         return Crowdfunding.objects.filter(
@@ -36,11 +40,8 @@ class CrowdfundingListView(UserPassesTestMixin, ListView):
         )
 
 
-class CrowdfundingDetailView(UserPassesTestMixin, DetailView):
+class CrowdfundingDetailView(CrowdfundingAuthMixin, DetailView):
     template_name = 'froide_crowdfunding/detail.html'
-
-    def get_test_func(self):
-        return lambda: self.request.user.is_staff
 
     def get_queryset(self):
         return Crowdfunding.objects.filter(

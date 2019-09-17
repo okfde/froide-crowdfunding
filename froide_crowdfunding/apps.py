@@ -22,7 +22,7 @@ class FroideCrowdfundingConfig(AppConfig):
 
         @menu_registry.register
         def get_campaign_menu_item(request):
-            if not request.user.is_staff:
+            if not request.user.has_perm('froide_crowdfunding.can_crowdfund'):
                 return None
             try:
                 return MenuItem(
