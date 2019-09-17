@@ -18,6 +18,11 @@ def get_foirequest_crowdfunding(foirequest):
 
 
 @register.filter
+def can_crowdfund(user):
+    return user.has_perm('froide_crowdfunding.can_crowdfund')
+
+
+@register.filter
 def get_crowdfundings(foirequest, status=None):
     crowdfundings = get_foirequest_crowdfunding(foirequest)
     if status is not None:
