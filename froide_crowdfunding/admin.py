@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from froide.helper.email_sending import send_template_email
+from froide.helper.admin_utils import ForeignKeyFilter
 
 from .models import Crowdfunding, Contribution
 
@@ -47,6 +48,23 @@ class CrowdfundingAdmin(admin.ModelAdmin):
 
 class ContributionAdmin(admin.ModelAdmin):
     raw_id_fields = ('crowdfunding', 'user', 'order')
+    list_display = (
+        'crowdfunding', 'user', 'timestamp',
+        'amount', 'status', 'public',
+    )
+    list_filter = (
+        'status', 'public',
+        ('crowdfunding', ForeignKeyFilter)
+    )
+    search_fields = ('crowdfunding__title',)
+    date_hierarchy = 'timestamp'
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        qs = qs.prefetch_related(
+            'crowdfunding', 'user'
+        )
+        return qs
 
 
 admin.site.register(Crowdfunding, CrowdfundingAdmin)
