@@ -1,5 +1,7 @@
 {% load i18n %}
 
+{% load markup %}
+
 <div class="row">
   <div class="col-md-8">
     <h5 class="card-title">
@@ -8,7 +10,7 @@
   </div>
   {% if not object == crowdfunding.request and crowdfunding.request %}
     <div class="col-md-4 text-right">
-      <a href="{{ crowdfunding.request.get_absolute_url }}">
+      <a class="btn btn-secondary btn-sm" href="{{ crowdfunding.request.get_absolute_url }}">
         zur Anfrage
       </a>
     </div>
@@ -35,14 +37,14 @@
 </p>
 <h4>{% trans "Here's why this matters to the crowdfunder." %}</h4>
 <blockquote>
-  <p class="card-text">
-    {{ crowdfunding.description|linebreaksbr }}
-  </p>
+  <div class="card-text">
+    {{ crowdfunding.description|markdown }}
+  </div>
 </blockquote>
 
 <h4>{% trans "Why this information is important to the public." %}</h4>
 <blockquote>
-  <p class="card-text">
-    {{ crowdfunding.public_interest|linebreaksbr }}
-  </p>
+  <div class="card-text">
+    {{ crowdfunding.public_interest|markdown }}
+  </div>
 </blockquote>
