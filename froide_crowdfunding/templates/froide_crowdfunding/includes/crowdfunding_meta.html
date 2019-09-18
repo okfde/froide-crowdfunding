@@ -6,7 +6,7 @@
       {{ crowdfunding.title }}
     </h5>
   </div>
-  {% if not object and crowdfunding.request %}
+  {% if not object == crowdfunding.request and crowdfunding.request %}
     <div class="col-md-4 text-right">
       <a href="{{ crowdfunding.request.get_absolute_url }}">
         zur Anfrage
