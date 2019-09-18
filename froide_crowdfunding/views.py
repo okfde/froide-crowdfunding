@@ -24,14 +24,7 @@ from .forms import (
 logger = logging.getLogger(__name__)
 
 
-class CrowdfundingAuthMixin(UserPassesTestMixin):
-    def get_test_func(self):
-        return lambda: self.request.user.has_perm(
-            'froide_crowdfunding.can_crowdfund'
-        )
-
-
-class CrowdfundingListView(CrowdfundingAuthMixin, ListView):
+class CrowdfundingListView(ListView):
     template_name = 'froide_crowdfunding/list.html'
 
     def get_queryset(self):
@@ -40,7 +33,7 @@ class CrowdfundingListView(CrowdfundingAuthMixin, ListView):
         )
 
 
-class CrowdfundingDetailView(CrowdfundingAuthMixin, DetailView):
+class CrowdfundingDetailView(DetailView):
     template_name = 'froide_crowdfunding/detail.html'
 
     def get_queryset(self):

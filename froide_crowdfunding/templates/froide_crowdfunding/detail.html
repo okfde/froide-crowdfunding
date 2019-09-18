@@ -52,7 +52,7 @@
                   {% trans "from you (name not public)" %}
                 </small>
               {% endif %}
-              {% if contribution.user == request.user or request.user.is_superuser %}
+              {% if contribution.user == request.user %}
                 <a href="{{ contribution.get_absolute_url }}">
                   {% trans "Show details" %}
                 </a>
