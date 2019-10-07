@@ -1,3 +1,4 @@
+from collections import defaultdict
 from decimal import Decimal
 
 from django.db import models
@@ -93,6 +94,13 @@ class Crowdfunding(models.Model):
             return 0
         return min(int(self.amount_raised / self.amount_needed * 100), 100)
 
+    @property
+    def progress_tentative(self):
+        if self.amount_needed == 0:
+            return 0
+        only_tentative = max(0, self.amount_tentative - self.amount_raised)
+        return min(int(only_tentative / self.amount_needed * 100), 100)
+
     def get_absolute_url(self):
         return reverse('crowdfunding:crowdfunding-detail',
                        kwargs={'slug': self.slug})
@@ -104,15 +112,21 @@ class Crowdfunding(models.Model):
         return reverse('crowdfunding:crowdfunding-start_contribution',
                        kwargs={'pk': self.pk})
 
-    def update_amount_raised(self, save=True):
-        contributions = self.contribution_set.all().select_related('order')
-        amount = Decimal(0)
+    def update_amount(self, save=True):
+        contributions = self.contribution_set.all().select_related(
+            'order'
+        ).prefetch_related('order__payments')
+
+        all_amounts = defaultdict(Decimal)
         for contribution in contributions:
             if not contribution.order:
                 continue
-            if contribution.order.is_fully_paid():
-                amount += contribution.amount
-        self.amount_raised = amount
+            amounts = contribution.order.get_payment_amounts()
+            for amount_key in amounts:
+                # Assume all values in EUR
+                all_amounts[amount_key] += amounts[amount_key].amount
+        self.amount_raised = all_amounts['total']
+        self.amount_tentative = all_amounts['tentative']
         if save:
             self.save()
 

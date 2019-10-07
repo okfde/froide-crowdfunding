@@ -27,12 +27,12 @@ def payment_status_changed(sender=None, instance=None, **kwargs):
             PaymentStatus.ERROR, PaymentStatus.REFUNDED,
             PaymentStatus.REJECTED):
         obj.status = 'failed'
-    elif instance.status == PaymentStatus.INPUT:
+    elif instance.status in (PaymentStatus.INPUT, PaymentStatus.PENDING):
         obj.status = 'pending'
     obj.save()
 
     crowdfunding = obj.crowdfunding
-    crowdfunding.update_amount_raised()
+    crowdfunding.update_amount()
 
 
 def send_contribution_notification(sender=None, contribution=None, **kawrgs):
