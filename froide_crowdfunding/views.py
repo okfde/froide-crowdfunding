@@ -16,7 +16,8 @@ from froide.helper.email_sending import send_template_email
 
 from .models import Crowdfunding
 from .forms import (
-    CrowdfundingRequestStartForm, ContributionForm
+    CrowdfundingRequestStartForm, ContributionForm,
+    DonationContributionForm
 )
 
 
@@ -111,7 +112,8 @@ def request_crowdfunding(request, pk):
     )
 
 
-def start_contribution(request, pk):
+def start_contribution(request, pk, form_class=ContributionForm,
+                       extra_context=None):
     crowdfunding = get_object_or_404(Crowdfunding, pk=pk)
     if crowdfunding.status != 'running':
         return render_403(request)
@@ -126,7 +128,7 @@ def start_contribution(request, pk):
     }
     status = 200
     if request.method == 'POST':
-        form = ContributionForm(data=request.POST, **form_kwargs)
+        form = form_class(data=request.POST, **form_kwargs)
 
         if form.is_valid():
             contribution = form.save()
@@ -137,9 +139,33 @@ def start_contribution(request, pk):
             }))
         status = 400
     else:
-        form = ContributionForm(**form_kwargs)
+        form = form_class(**form_kwargs)
 
-    return render(request, 'froide_crowdfunding/contribute.html', {
+    context = {
         'form': form,
+        'crowdfunding_contribute_urlname': (
+            'crowdfunding:crowdfunding-start_contribution'
+        ),
         'crowdfunding': crowdfunding
-    }, status=status)
+    }
+
+    if extra_context is not None:
+        context.update(extra_context)
+
+    return render(
+        request,
+        'froide_crowdfunding/contribute.html',
+        context,
+        status=status
+    )
+
+
+def start_contribution_donation(request, pk):
+    extra_context = {}
+    extra_context['crowdfunding_contribute_urlname'] = (
+        'crowdfunding:crowdfunding-start_contribution_donation'
+    )
+    return start_contribution(
+        request, pk, form_class=DonationContributionForm,
+        extra_context=extra_context
+    )

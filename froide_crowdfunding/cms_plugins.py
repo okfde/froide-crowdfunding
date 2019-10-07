@@ -1,4 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -21,7 +22,9 @@ class CrowdfundingFormPlugin(CMSPluginBase):
         context = super().render(context, instance, placeholder)
         context['object'] = instance
         context['crowdfunding'] = instance.crowdfunding
-
+        context['crowdfunding_contribute_urlname'] = (
+            'crowdfunding:crowdfunding-start_contribution_donation'
+        )
         context['crowdfunding_contribute_form'] = DonationContributionForm(
             user=context['request'].user
         )

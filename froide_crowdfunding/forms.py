@@ -332,12 +332,14 @@ class ContributionForm(forms.Form):
             user=self.user,
             amount=self.cleaned_data['amount'],
             note=self.cleaned_data.get('note', ''),
-            public=self.cleaned_data['public'],
+            public=self.cleaned_data.get('public', False),
             order=order,
         )
         return contribution
 
 
 class DonationContributionForm(ContributionForm):
-    note = None
-    terms = None
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields.pop('note')
+        self.fields.pop('terms')
