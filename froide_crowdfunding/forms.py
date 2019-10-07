@@ -5,6 +5,7 @@ import re
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
+from froide.account.forms import user_extra_registry
 from froide.helper.widgets import BootstrapCheckboxInput, PriceInput
 from froide.helper.db_utils import save_obj_with_slug
 
@@ -278,7 +279,10 @@ class ContributionForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
+        user = kwargs.pop('user', None)
+        if not user.is_authenticated:
+            user = None
+        self.user = user
         self.crowdfunding = kwargs.pop('crowdfunding', None)
         super(ContributionForm, self).__init__(*args, **kwargs)
 
@@ -290,8 +294,18 @@ class ContributionForm(forms.Form):
             self.fields['address'].initial = parsed.get('address', '')
             self.fields['postcode'].initial = parsed.get('postcode', '')
             self.fields['city'].initial = parsed.get('city', '')
+        user_extra_registry.on_init('donation', self)
+
+    def clean(self):
+        user_extra_registry.on_clean('donation', self)
+        return self.cleaned_data
 
     def save(self):
+        user_extra_registry.on_save(
+            'donation', self,
+            self.user if self.user.is_authenticated else None
+        )
+
         d = self.cleaned_data
         address_lines = d['address'].splitlines()
 
@@ -317,8 +331,13 @@ class ContributionForm(forms.Form):
             crowdfunding=self.crowdfunding,
             user=self.user,
             amount=self.cleaned_data['amount'],
-            note=self.cleaned_data['note'],
+            note=self.cleaned_data.get('note', ''),
             public=self.cleaned_data['public'],
             order=order,
         )
         return contribution
+
+
+class DonationContributionForm(ContributionForm):
+    note = None
+    terms = None
