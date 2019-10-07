@@ -8,12 +8,21 @@ from django.utils.translation import ugettext_lazy as _
 from froide.helper.widgets import BootstrapCheckboxInput, PriceInput
 from froide.helper.db_utils import save_obj_with_slug
 
-from froide_payment.models import Order, PAYMENT_METHODS
+from froide_payment.models import Order, CHECKOUT_PAYMENT_CHOICES_DICT
 
 from .models import OVERHEAD_FACTOR, Crowdfunding, Contribution
 
 
 POSTCODE_RE = re.compile('(\d{5})\s+(.*)')
+
+CROWDFUNDING_METHODS = (
+    'creditcard', 'lastschrift', 'paypal', 'sofort'
+)
+
+PAYMENT_METHODS = [
+    (method, CHECKOUT_PAYMENT_CHOICES_DICT[method])
+    for method in CROWDFUNDING_METHODS
+]
 
 
 def can_start_crowdfunding(crowdfundings):
