@@ -7,7 +7,6 @@ from django.urls import reverse
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import ListView, DetailView
-from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Case, When, Value, BooleanField, Q
 
 from froide.foirequest.models import FoiRequest
