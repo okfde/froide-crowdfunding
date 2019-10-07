@@ -1,0 +1,30 @@
+{% load i18n %}
+{% load form_helper %}
+{% load crowdfunding %}
+
+
+<div class="card mb-3 mt-3" id="crowdfunding-form">
+  <div class="card-header">
+    <h3 class="float-left">{{ crowdfunding.title }}</h3>
+    {% if crowdfunding.date_end %}
+      <time class="float-right" title="{{ crowdfunding.date_end }}" datetime="{{ crowdfunding.date_end | date:'c' }}">noch {{ crowdfunding.date_end|timeuntil }}</time>
+    {% endif %}
+  </div>
+  <div class="card-body">
+    <div class="text-right">
+      <a class="btn btn-light btn-sm mb-3" data-toggle="collapse" href="#crowdfunding-meta" role="button" aria-expanded="false" aria-controls="crowdfunding-meta">
+        Details zur Verwendung
+      </a>
+    </div>
+    <div class="collapse" id="crowdfunding-meta">
+      {% include "froide_crowdfunding/includes/crowdfunding_meta.html" with crowdfunding=crowdfunding %}
+      <hr/>
+    </div>
+    {% include "froide_crowdfunding/includes/crowdfunding_conditions.html" with crowdfunding=crowdfunding %}
+    <hr/>
+    <h4>
+      Wie viel können Sie beitragen?
+    </h4>
+    {% include "froide_crowdfunding/includes/crowdfunding_form.html" %}
+  </div>
+</div>

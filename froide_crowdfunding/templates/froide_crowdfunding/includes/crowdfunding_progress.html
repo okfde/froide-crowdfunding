@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<div>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" title="{% trans 'Amount received' %}" style="width: {{ crowdfunding.progress_percent }}%" aria-valuenow="{{ crowdfunding.progress_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+    {% if crowdfunding.progress_tentative %}
+      <div class="progress-bar progress-bar-striped progress-bar-animated" title="{% trans 'Amount to be confirmed' %}" role="progressbar" style="width: {{ crowdfunding.progress_tentative }}%" aria-valuenow="{{ crowdfunding.progress_tentative }}" aria-valuemin="0" aria-valuemax="100"></div>
+    {% endif %}
+  </div>
+  <div class="text-right">
+      <small class="text-muted">
+        {{ crowdfunding.amount_tentative }}&nbsp;€ von {{ crowdfunding.amount_needed }}&nbsp;€
+      </small>
+  </div>
+</div>
