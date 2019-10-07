@@ -58,6 +58,10 @@ class Crowdfunding(models.Model):
     amount_needed = models.DecimalField(
         decimal_places=2, max_digits=10
     )
+    amount_tentative = models.DecimalField(
+        decimal_places=2, max_digits=10,
+        default=Decimal(0.0)
+    )
     amount_raised = models.DecimalField(
         decimal_places=2, max_digits=10,
         default=Decimal(0.0)
