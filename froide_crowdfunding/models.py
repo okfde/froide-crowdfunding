@@ -7,6 +7,12 @@ from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
 
+try:
+    from cms.models.pluginmodel import CMSPlugin
+except ImportError:
+    CMSPlugin = None
+
+
 from froide.foirequest.models import FoiRequest
 
 
@@ -193,3 +199,18 @@ class Contribution(models.Model):
     @property
     def status_color(self):
         return self.STATUS_COLORS[self.status]
+
+
+if CMSPlugin:
+
+    class CrowdfundingFormCMSPlugin(CMSPlugin):
+        crowdfunding = models.ForeignKey(
+            Crowdfunding, related_name='+',
+            on_delete=models.CASCADE
+        )
+
+    class CrowdfundingProgressCMSPlugin(CMSPlugin):
+        crowdfunding = models.ForeignKey(
+            Crowdfunding, related_name='+',
+            on_delete=models.CASCADE
+        )
