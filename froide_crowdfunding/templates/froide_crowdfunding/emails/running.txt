@@ -7,7 +7,7 @@
 Please promote your crowdfunding project on social media and via other channels, so it can reach the requested amount.
 We will keep you informed about the progress.
 {% endblocktrans %}
-{% blocktrans with site_name=SITE_NAME %}
+{% blocktrans with site_name=site_name %}
 Cheers,
 {{ site_name }}
 {% endblocktrans %}{% endautoescape %}
