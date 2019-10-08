@@ -280,7 +280,7 @@ class ContributionForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
-        if not user.is_authenticated:
+        if user is not None and not user.is_authenticated:
             user = None
         self.user = user
         self.crowdfunding = kwargs.pop('crowdfunding', None)
@@ -303,7 +303,7 @@ class ContributionForm(forms.Form):
     def save(self):
         user_extra_registry.on_save(
             'donation', self,
-            self.user if self.user.is_authenticated else None
+            self.user if self.user and self.user.is_authenticated else None
         )
 
         d = self.cleaned_data
