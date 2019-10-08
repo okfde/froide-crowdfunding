@@ -214,3 +214,9 @@ if CMSPlugin:
             Crowdfunding, related_name='+',
             on_delete=models.CASCADE
         )
+
+    class CrowdfundingContributorsCMSPlugin(CMSPlugin):
+        crowdfunding = models.ForeignKey(
+            Crowdfunding, related_name='+',
+            on_delete=models.CASCADE
+        )

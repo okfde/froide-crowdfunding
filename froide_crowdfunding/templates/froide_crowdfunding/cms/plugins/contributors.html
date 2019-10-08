@@ -1,0 +1,5 @@
+{% if contributor_names %}
+<span>{% for name in contributor_names %}{{ name }}{% if not forloop.last %}, {% endif %}{% endfor %} und {{ contributor_count }} weitere SpenderInnen</span>
+{% elif contributor_count > 0 %}
+<span>{{ contributor_count }} SpenderInnen</span>
+{% endif %}
