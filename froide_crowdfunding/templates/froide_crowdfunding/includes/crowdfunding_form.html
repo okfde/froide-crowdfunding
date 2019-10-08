@@ -2,7 +2,13 @@
 {% load form_helper %}
 {% load crowdfunding %}
 
-<form method="post" action="{% url crowdfunding_contribute_urlname pk=crowdfunding.pk %}#crowdfunding-form">
+{% if crowdfunding_contribute_urlname %}
+  {% url crowdfunding_contribute_urlname pk=crowdfunding.pk as form_url %}
+{% else %}
+  {% url 'crowdfunding:crowdfunding-start_contribution' pk=crowdfunding.pk as form_url %}
+{% endif %}
+
+<form method="post" action="{{ form_url }}#crowdfunding-form">
   {% csrf_token %}
   {% if crowdfunding_contribute_form %}
     {% render_form crowdfunding_contribute_form %}
