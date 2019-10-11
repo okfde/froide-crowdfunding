@@ -1,10 +1,10 @@
 from decimal import Decimal
 import math
-import re
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
+from froide.account.utils import parse_address
 from froide.account.forms import user_extra_registry
 from froide.helper.widgets import BootstrapCheckboxInput, PriceInput
 from froide.helper.db_utils import save_obj_with_slug
@@ -13,8 +13,6 @@ from froide_payment.models import Order, CHECKOUT_PAYMENT_CHOICES_DICT
 
 from .models import OVERHEAD_FACTOR, Crowdfunding, Contribution
 
-
-POSTCODE_RE = re.compile('(\d{5})\s+(.*)')
 
 CROWDFUNDING_METHODS = (
     'creditcard', 'lastschrift', 'paypal', 'sofort'
@@ -49,20 +47,6 @@ def calculate_amount_needed(amount_requested):
     # Round up to next 10
     amount_needed = math.ceil(amount_needed / 10) * 10
     return Decimal(amount_needed)
-
-
-def parse_address(address):
-    match = POSTCODE_RE.search(address)
-    if match is None:
-        return {}
-    postcode = match.group(1)
-    city = match.group(2)
-    refined = address.replace(match.group(0), '').strip().splitlines()
-    return {
-        'address': refined[0],
-        'postcode': postcode,
-        'city': city
-    }
 
 
 class CrowdfundingRequestStartForm(forms.ModelForm):
