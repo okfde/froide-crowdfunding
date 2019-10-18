@@ -291,7 +291,7 @@ class ContributionForm(forms.Form):
         )
 
         d = self.cleaned_data
-        address_lines = d['address'].splitlines()
+        address_lines = d['address'].splitlines() or ['']
 
         order = Order.objects.create(
             user=self.user,
@@ -319,7 +319,7 @@ class ContributionForm(forms.Form):
             public=self.cleaned_data.get('public', False),
             order=order,
         )
-        return contribution
+        return order, contribution
 
 
 class DonationContributionForm(ContributionForm):

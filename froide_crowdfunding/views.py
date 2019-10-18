@@ -131,12 +131,10 @@ def start_contribution(request, pk, form_class=ContributionForm,
         form = form_class(data=request.POST, **form_kwargs)
 
         if form.is_valid():
-            contribution = form.save()
+            order, contribution = form.save()
             data = form.cleaned_data
-            return redirect(reverse('froide_payment:start-payment', kwargs={
-                'token': contribution.order.token,
-                'variant': data['method']
-            }))
+            payment_url = order.get_absolute_payment_url(data['method'])
+            return redirect(payment_url)
         status = 400
     else:
         form = form_class(**form_kwargs)
