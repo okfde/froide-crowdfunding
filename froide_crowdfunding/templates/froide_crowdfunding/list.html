@@ -12,14 +12,7 @@
           {{ crowdfunding.title }}
         </a>
       </h5>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: {{ crowdfunding.progress_percent }}%" aria-valuenow="{{ crowdfunding.progress_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <div class="text-right">
-        <small class="text-muted">
-          {{ crowdfunding.amount_raised }}&nbsp;€ von {{ crowdfunding.amount_needed }}&nbsp;€
-        </small>
-      </div>
+      {% include "froide_crowdfunding/includes/crowdfunding_progress.html" with crowdfunding=crowdfunding %}
     </div>
   </div>
 {% endfor %}
