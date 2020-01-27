@@ -17,10 +17,11 @@ def payment_status_changed(sender=None, instance=None, **kwargs):
 
     if instance.status == PaymentStatus.CONFIRMED:
         if obj.order.is_fully_paid():
-            obj.status = 'success'
-            contribution_successful.send(
-                sender=Contribution, contribution=obj
-            )
+            if obj.status != 'success':
+                obj.status = 'success'
+                contribution_successful.send(
+                    sender=Contribution, contribution=obj
+                )
         else:
             obj.status = 'pending'
     elif instance.status in (
