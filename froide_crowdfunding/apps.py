@@ -22,6 +22,8 @@ class FroideCrowdfundingConfig(AppConfig):
 
         @menu_registry.register
         def get_crowdfunding_menu_item(request):
+            # FIXME: Disable for now
+            return None
             if not request.user.has_perm('froide_crowdfunding.can_crowdfund'):
                 return None
             try:
