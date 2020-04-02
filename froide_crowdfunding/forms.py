@@ -15,7 +15,7 @@ from .models import OVERHEAD_FACTOR, Crowdfunding, Contribution
 
 
 CROWDFUNDING_METHODS = (
-    'creditcard', 'lastschrift', 'paypal', 'sofort'
+    'creditcard', 'sepa', 'paypal', 'sofort'
 )
 
 PAYMENT_METHODS = [
