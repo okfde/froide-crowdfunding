@@ -235,11 +235,10 @@ class ContributionForm(forms.Form):
         })
     )
 
-    email = forms.CharField(
+    email = forms.EmailField(
         max_length=255,
         label=_('Email'),
-        widget=forms.TextInput(attrs={
-            'placeholder': _('Your email address'),
+        widget=forms.EmailInput(attrs={
             'class': 'form-control'
         })
     )
