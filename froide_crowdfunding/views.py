@@ -24,15 +24,6 @@ from .forms import (
 logger = logging.getLogger(__name__)
 
 
-class CrowdfundingListView(ListView):
-    template_name = 'froide_crowdfunding/list.html'
-
-    def get_queryset(self):
-        return Crowdfunding.objects.filter(
-            status='running'
-        )
-
-
 class CrowdfundingDetailView(DetailView):
     template_name = 'froide_crowdfunding/detail.html'
 
