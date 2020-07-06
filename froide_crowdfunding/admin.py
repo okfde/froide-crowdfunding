@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from froide.helper.email_sending import send_template_email
 from froide.helper.admin_utils import ForeignKeyFilter

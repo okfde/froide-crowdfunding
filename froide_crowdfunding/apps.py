@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 from django.urls import reverse, NoReverseMatch
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class FroideCrowdfundingConfig(AppConfig):

@@ -2,7 +2,7 @@ from decimal import Decimal
 import math
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from froide.account.utils import parse_address
 from froide.account.forms import user_extra_registry
