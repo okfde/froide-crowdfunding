@@ -72,3 +72,18 @@ class CrowdfundingContributorsPlugin(CMSPluginBase):
         ]
         context['contributor_count'] -= len(context['contributor_names'])
         return context
+
+
+@plugin_pool.register_plugin
+class CrowdfundingListPlugin(CMSPluginBase):
+    module = _("Crowdfunding")
+    name = _('Crowdfunding Project List')
+    render_template = "froide_crowdfunding/cms/plugins/list.html"
+    cache = True
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        context['object_list'] = Crowdfunding.objects.filter(
+            status='running'
+        )
+        return context
