@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-14 14:31+0100\n"
-"PO-Revision-Date: 2019-11-14 14:32+0100\n"
+"POT-Creation-Date: 2020-07-06 12:52+0200\n"
+"PO-Revision-Date: 2020-07-06 12:55+0200\n"
 "Last-Translator: Stefan Wehrmeyer <stefan.wehrmeyer@okfn.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.3\n"
 
 #: admin.py:32
 msgid "💸 Your crowdfunding project needs review"
@@ -32,14 +32,14 @@ msgstr "Froide Crowdfunding-App"
 
 #: apps.py:31
 msgid "Your crowdfundings"
-msgstr "Ihre Crowdfunding-Kampagnen"
+msgstr "Meine Crowdfunding-Kampagnen"
 
 #: cms_apps.py:8
 msgid "Crowdfunding CMS App"
 msgstr "Crowdfunding CMS App"
 
-#: cms_plugins.py:15 cms_plugins.py:38 cms_plugins.py:54 models.py:88
-#: templates/froide_crowdfunding/detail.html:12
+#: cms_plugins.py:15 cms_plugins.py:38 cms_plugins.py:54 cms_plugins.py:79
+#: models.py:88 templates/froide_crowdfunding/detail.html:12
 #: templates/froide_crowdfunding/includes/request_pane.html:5
 msgid "Crowdfunding"
 msgstr "Crowdfunding-Kampagne"
@@ -55,6 +55,10 @@ msgstr "Crowdfunding-Fortschritt"
 #: cms_plugins.py:55
 msgid "Crowdfunding Contributors"
 msgstr "Crowdfunding-Unterstützende"
+
+#: cms_plugins.py:80
+msgid "Crowdfunding Project List"
+msgstr "Crowdfunding-Projektliste"
 
 #: forms.py:55
 msgid "Title"
@@ -101,7 +105,7 @@ msgstr ""
 "Euro). Wir erhöhen diesen Betrag automatisch, um unsere eigenen Kosten zu "
 "decken."
 
-#: forms.py:103 forms.py:257
+#: forms.py:103 forms.py:256
 msgid "Accept our terms for crowdfunding."
 msgstr "Bedingungen der Crowdfunding-Kampagne akzeptieren."
 
@@ -173,23 +177,19 @@ msgstr "Schweiz"
 msgid "Email"
 msgstr "E-Mail"
 
-#: forms.py:242
-msgid "Your email address"
-msgstr "Ihre E-Mail-Adresse"
-
-#: forms.py:248
+#: forms.py:247
 msgid "Payment method"
 msgstr "Zahlungsmethode"
 
-#: forms.py:260
+#: forms.py:259
 msgid "You need to accept our Terms and Conditions and Priavcy Statement."
 msgstr "Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen akzeptieren."
 
-#: forms.py:310
+#: forms.py:309
 msgid "Contribution to Crowdfunding “{}”"
 msgstr "Beitrag zum Crowdfunding “{}”"
 
-#: listeners.py:49
+#: listeners.py:50
 msgid "💸 Your crowdfunding contribution has been received"
 msgstr "💸 Spende für Crowdfunding-Projekt eingetroffen"
 
@@ -532,6 +532,9 @@ msgstr "Crowdfunding-Projekt braucht Genehmigung"
 #: views.py:99
 msgid "Your form contained errors."
 msgstr "Das Formular enthielt Fehler."
+
+#~ msgid "Your email address"
+#~ msgstr "Ihre E-Mail-Adresse"
 
 #~ msgid "Description"
 #~ msgstr "Beschreibung"
