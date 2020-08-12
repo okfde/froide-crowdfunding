@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-06 12:52+0200\n"
-"PO-Revision-Date: 2020-07-06 12:55+0200\n"
+"POT-Creation-Date: 2020-08-12 10:19+0200\n"
+"PO-Revision-Date: 2020-08-12 10:22+0200\n"
 "Last-Translator: Stefan Wehrmeyer <stefan.wehrmeyer@okfn.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -32,17 +32,17 @@ msgstr "Froide Crowdfunding-App"
 
 #: apps.py:31
 msgid "Your crowdfundings"
-msgstr "Meine Crowdfunding-Kampagnen"
+msgstr "Meine Crowdfundings"
 
 #: cms_apps.py:8
 msgid "Crowdfunding CMS App"
 msgstr "Crowdfunding CMS App"
 
 #: cms_plugins.py:15 cms_plugins.py:38 cms_plugins.py:54 cms_plugins.py:79
-#: models.py:88 templates/froide_crowdfunding/detail.html:12
+#: models.py:87 templates/froide_crowdfunding/detail.html:12
 #: templates/froide_crowdfunding/includes/request_pane.html:5
 msgid "Crowdfunding"
-msgstr "Crowdfunding-Kampagne"
+msgstr "Crowdfunding"
 
 #: cms_plugins.py:16
 msgid "Crowdfunding Embed Form"
@@ -183,7 +183,9 @@ msgstr "Zahlungsmethode"
 
 #: forms.py:259
 msgid "You need to accept our Terms and Conditions and Priavcy Statement."
-msgstr "Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen akzeptieren."
+msgstr ""
+"Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen und unsere "
+"Datenschutzerklärung akzeptieren."
 
 #: forms.py:309
 msgid "Contribution to Crowdfunding “{}”"
@@ -213,61 +215,57 @@ msgstr "erfolgreich"
 msgid "failed"
 msgstr "fehlgeschlagen"
 
-#: models.py:34
-msgid "finished"
-msgstr "abgeschlossen"
-
-#: models.py:46
+#: models.py:45
 msgid "fees"
 msgstr "Gebühren"
 
-#: models.py:47
+#: models.py:46
 msgid "appeal"
 msgstr "Widerspruch"
 
-#: models.py:48
+#: models.py:47
 msgid "lawsuit"
 msgstr "Klage"
 
-#: models.py:49
+#: models.py:48
 msgid "other"
 msgstr "andere"
 
-#: models.py:89
+#: models.py:88
 msgid "Crowdfundings"
-msgstr "Crowdfunding-Kampagnen"
+msgstr "Crowdfundings"
 
-#: models.py:91
+#: models.py:90
 msgid "Can use crowdfunding"
 msgstr "Kann Crowdfunding nutzen"
 
-#: models.py:158
+#: models.py:157
 msgid "Waiting for input"
 msgstr "Warte auf Eingabe"
 
-#: models.py:159
+#: models.py:158
 msgid "Processing..."
 msgstr "In Bearbeitung..."
 
-#: models.py:160
+#: models.py:159
 msgid "Successful"
 msgstr "Erfolgreich"
 
-#: models.py:161
+#: models.py:160
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
-#: models.py:176
+#: models.py:175
 msgid "Contribution"
 msgstr "Beitrag"
 
-#: models.py:177 templates/froide_crowdfunding/detail.html:30
+#: models.py:176 templates/froide_crowdfunding/detail.html:30
 msgid "Contributions"
 msgstr "Beiträge"
 
 #: templates/admin/froide_crowdfunding/crowdfunding/change_form.html:8
 msgid "This crowdfunding's contributions"
-msgstr "Die Beiträge dieser Crowdfunding-Kampagne"
+msgstr "Die Beiträge dieses Crowdfundings"
 
 #: templates/froide_crowdfunding/detail.html:22
 msgid "Add your contribution"
@@ -463,20 +461,19 @@ msgstr "Unbestätigte Beträge"
 
 #: templates/froide_crowdfunding/includes/request_pane.html:13
 msgid "This crowdfunding is waiting for approval."
-msgstr "Diese Crowdfunding-Kampagne wartet auf Freigabe."
+msgstr "Dieses Crowdfunding wartet auf Freigabe."
 
 #: templates/froide_crowdfunding/includes/request_pane.html:17
 msgid "This crowdfunding has received feedback and needs your review."
-msgstr ""
-"Diese Crowdfunding-Kampagne hat Feedback erhalten und muss angepasst werden."
+msgstr "Dieses Crowdfunding hat Feedback erhalten und muss angepasst werden."
 
 #: templates/froide_crowdfunding/includes/request_pane.html:20
 msgid "This crowdfunding has finished."
-msgstr "Diese Crowdfunding-Kampagne ist abgeschlossen."
+msgstr "Dieses Crowdfunding ist abgeschlossen."
 
 #: templates/froide_crowdfunding/includes/request_pane.html:22
 msgid "This crowdfunding is running!"
-msgstr "Diese Crowdfunding-Kampagne läuft gerade!"
+msgstr "Dieses Crowdfunding läuft gerade!"
 
 #: templates/froide_crowdfunding/includes/request_pane.html:29
 msgid "Start a crowdfunding campaign"
@@ -532,6 +529,9 @@ msgstr "Crowdfunding-Projekt braucht Genehmigung"
 #: views.py:99
 msgid "Your form contained errors."
 msgstr "Das Formular enthielt Fehler."
+
+#~ msgid "finished"
+#~ msgstr "abgeschlossen"
 
 #~ msgid "Your email address"
 #~ msgstr "Ihre E-Mail-Adresse"
