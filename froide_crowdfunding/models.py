@@ -31,9 +31,8 @@ class Crowdfunding(models.Model):
         ('running', _('running')),
         ('successful', _('successful')),
         ('failed', _('failed')),
-        ('finished', _('finished')),
     )
-    FINAL_STATUS = ('finished', 'failed', 'successful')
+    FINAL_STATUS = ('failed', 'successful')
     REVIEW_STATUS = ('denied',)
     status = models.CharField(
         max_length=25,
