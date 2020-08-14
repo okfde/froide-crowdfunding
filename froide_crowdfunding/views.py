@@ -8,6 +8,7 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, DetailView
 from django.db.models import Case, When, Value, BooleanField, Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from froide.foirequest.models import FoiRequest
 from froide.foirequest.auth import can_write_foirequest
@@ -24,7 +25,7 @@ from .forms import (
 logger = logging.getLogger(__name__)
 
 
-class CrowdfundingListView(ListView):
+class CrowdfundingListView(LoginRequiredMixin, ListView):
     template_name = 'froide_crowdfunding/list.html'
 
     def get_queryset(self):
