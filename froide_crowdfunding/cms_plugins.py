@@ -84,6 +84,6 @@ class CrowdfundingListPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         context['object_list'] = Crowdfunding.objects.filter(
-            status='running'
+            status='running', show_in_list=True
         )
         return context
