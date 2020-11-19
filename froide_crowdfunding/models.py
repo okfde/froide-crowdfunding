@@ -24,6 +24,7 @@ class Crowdfunding(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField(blank=True)
     public_interest = models.TextField(blank=True)
+    show_in_list = models.BooleanField(default=True)
 
     STATUS_CHOICES = (
         ('needs_approval', _('needs approval')),
