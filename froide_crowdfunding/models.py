@@ -200,6 +200,12 @@ class Contribution(models.Model):
     def status_color(self):
         return self.STATUS_COLORS[self.status]
 
+    def get_reference_data(self):
+        return {
+            'reference': 'crowdfunding',
+            'keyword': 'crowdfunding-{}'.format(self.crowdfunding_id)
+        }
+
 
 if CMSPlugin:
 
