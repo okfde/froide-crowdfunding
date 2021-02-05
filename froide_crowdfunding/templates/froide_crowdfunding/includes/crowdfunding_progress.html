@@ -2,14 +2,22 @@
 
 <div>
   <div class="progress" style="height: 25px">
-    <div class="progress-bar" role="progressbar" title="{% trans 'Amount received' %}" style="width: {{ crowdfunding.progress_percent }}%" aria-valuenow="{{ crowdfunding.progress_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar" role="progressbar" title="{% blocktrans with amount=crowdfunding.amount_raised percent=crowdfunding.progress_percent %}{{ amount }}&nbsp;€ received ({{ percent }}%){% endblocktrans %}" style="width: {{ crowdfunding.progress_percent }}%" aria-valuenow="{{ crowdfunding.progress_percent }}"></div>
     {% if crowdfunding.progress_tentative %}
-      <div class="progress-bar progress-bar-striped progress-bar-animated" title="{% trans 'Amount to be confirmed' %}" role="progressbar" style="width: {{ crowdfunding.progress_tentative }}%" aria-valuenow="{{ crowdfunding.progress_tentative }}" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar progress-bar-striped progress-bar-animated" title="{% blocktrans with amount=crowdfunding.amount_tentative percent=crowdfunding.progress_percent %}{{ amount }}&nbsp;€ pledged but unconfirmed ({{ percent }}%){% endblocktrans %}" role="progressbar" style="width: {{ crowdfunding.progress_tentative }}%" aria-valuenow="{{ crowdfunding.progress_tentative }}"></div>
     {% endif %}
   </div>
   <div class="text-right">
       <small class="text-muted">
-        {{ crowdfunding.amount_tentative }}&nbsp;€ von {{ crowdfunding.amount_needed }}&nbsp;€
+        {% if crowdfunding.progress_tentative %}
+          {% blocktrans with amount_pledged=crowdfunding.amount_tentative amount=crowdfounding.raised amount_needed=crowdfunding.amount_needed %}
+            {{ amount_pledged }}&nbsp;€ pledged of {{ amount_needed }}&nbsp;€, {{ amount }}&nbsp;€ received
+          {% endblocktrans %}
+        {% else %}
+          {% blocktrans with amount=crowdfounding.raised amount_needed=crowdfunding.amount_needed %}
+            {{ amount }}&nbsp;€ of {{ amount_needed }}&nbsp;€ received
+          {% endblocktrans %}
+        {% endif %}
       </small>
   </div>
 </div>
