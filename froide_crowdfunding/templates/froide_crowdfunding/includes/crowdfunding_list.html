@@ -2,9 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <h5>
+        {% if crowdfunding.is_public %}
         <a href="{{ crowdfunding.get_absolute_url }}">
           {{ crowdfunding.title }}
         </a>
+        {% else %}
+          {{ crowdfunding.title }}
+          <small>({{ crowdfunding.get_status_display }})</small>
+        {% endif %}
       </h5>
       {% include "froide_crowdfunding/includes/crowdfunding_progress.html" with crowdfunding=crowdfunding %}
     </div>
