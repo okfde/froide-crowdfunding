@@ -11,7 +11,9 @@
           <small>({{ crowdfunding.get_status_display }})</small>
         {% endif %}
       </h5>
-      {% include "froide_crowdfunding/includes/crowdfunding_progress.html" with crowdfunding=crowdfunding %}
+      {% if crowdfunding.is_public %}
+        {% include "froide_crowdfunding/includes/crowdfunding_progress.html" with crowdfunding=crowdfunding %}
+      {% endif %}
     </div>
   </div>
 {% endfor %}

@@ -10,11 +10,11 @@
   <div class="text-right">
       <small class="text-muted">
         {% if crowdfunding.progress_tentative %}
-          {% blocktrans with amount_pledged=crowdfunding.amount_tentative amount=crowdfounding.raised amount_needed=crowdfunding.amount_needed %}
+          {% blocktrans with amount_pledged=crowdfunding.amount_tentative amount=crowdfounding.amount_raised amount_needed=crowdfunding.amount_needed %}
             {{ amount_pledged }}&nbsp;€ pledged of {{ amount_needed }}&nbsp;€, {{ amount }}&nbsp;€ received
           {% endblocktrans %}
         {% else %}
-          {% blocktrans with amount=crowdfounding.raised amount_needed=crowdfunding.amount_needed %}
+          {% blocktrans with amount=crowdfounding.amount_raised amount_needed=crowdfunding.amount_needed %}
             {{ amount }}&nbsp;€ of {{ amount_needed }}&nbsp;€ received
           {% endblocktrans %}
         {% endif %}
