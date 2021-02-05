@@ -44,9 +44,12 @@ class CrowdfundingDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        user_id = -1
+        if self.request.user.is_authenticated:
+            user_id = self.request.user.id
         context['contributions'] = self.object.contribution_set.annotate(
             mine=Case(
-                When(user_id=self.request.user.id, then=Value(True)),
+                When(user_id=user_id, then=Value(True)),
                 default=Value(False),
                 output_field=BooleanField()
             )
