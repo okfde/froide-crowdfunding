@@ -19,6 +19,21 @@ from froide.foirequest.models import FoiRequest
 OVERHEAD_FACTOR = Decimal('1.15')
 
 
+class CrowdfundingStatus(models.TextChoices):
+    NEEDS_APPROVAL = ('needs_approval', _('needs approval'))
+    DENIED = ('denied', _('denied'))
+    RUNNING = ('running', _('running'))
+    SUCCESSFUL = ('successful', _('successful'))
+    FAILED = ('failed', _('failed'))
+
+
+class CrowdfundingKind(models.TextChoices):
+    FEES = ('fees', _('fees'))
+    APPEAL = ('appeal', _('appeal'))
+    LAWSUIT = ('lawsuit', _('lawsuit'))
+    OTHER = ('other', _('other'))
+
+
 class Crowdfunding(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
@@ -26,31 +41,21 @@ class Crowdfunding(models.Model):
     public_interest = models.TextField(blank=True)
     show_in_list = models.BooleanField(default=True)
 
-    STATUS_CHOICES = (
-        ('needs_approval', _('needs approval')),
-        ('denied', _('denied')),
-        ('running', _('running')),
-        ('successful', _('successful')),
-        ('failed', _('failed')),
+    FINAL_STATUS = (
+        CrowdfundingStatus.FAILED, CrowdfundingStatus.SUCCESSFUL
     )
-    FINAL_STATUS = ('failed', 'successful')
-    REVIEW_STATUS = ('denied',)
+    REVIEW_STATUS = (CrowdfundingStatus.DENIED,)
+    PUBLIC_STATUS = (CrowdfundingStatus.RUNNING,) + FINAL_STATUS
     status = models.CharField(
         max_length=25,
-        choices=STATUS_CHOICES,
+        choices=CrowdfundingStatus.choices,
         default='needs_approval'
     )
     feedback = models.TextField(blank=True)
 
-    KIND_CHOICES = (
-        ('fees', _('fees')),
-        ('appeal', _('appeal')),
-        ('lawsuit', _('lawsuit')),
-        ('other', _('other')),
-    )
     kind = models.CharField(
         max_length=25,
-        choices=KIND_CHOICES,
+        choices=CrowdfundingKind.choices,
     )
 
     date_requested = models.DateTimeField(
@@ -107,6 +112,10 @@ class Crowdfunding(models.Model):
         only_tentative = max(0, self.amount_tentative - self.amount_raised)
         return min(int(only_tentative / self.amount_needed * 100), 100)
 
+    @property
+    def is_public(self):
+        return self.status in self.PUBLIC_STATUS
+
     def get_absolute_url(self):
         return reverse('crowdfunding:crowdfunding-detail',
                        kwargs={'slug': self.slug})
@@ -137,6 +146,13 @@ class Crowdfunding(models.Model):
             self.save()
 
 
+class ContributionStatus(models.TextChoices):
+    WAITING = ('', _('Waiting for input'))
+    PENDING = ('pending', _('Processing...'))
+    SUCCESS = ('success', _('Successful'))
+    FAILED = ('failed', _('Failed'))
+
+
 class Contribution(models.Model):
     crowdfunding = models.ForeignKey(
         Crowdfunding,
@@ -154,21 +170,15 @@ class Contribution(models.Model):
         'froide_payment.Order', null=True, blank=True,
         on_delete=models.SET_NULL
     )
-    STATUS_CHOICES = (
-        ('', _('Waiting for input')),
-        ('pending', _('Processing...')),
-        ('success', _('Successful')),
-        ('failed', _('Failed')),
+    status = models.CharField(
+        max_length=20, choices=ContributionStatus.choices, default=''
     )
     STATUS_COLORS = {
-        '': 'secondary',
-        'pending': 'light',
-        'success': 'success',
-        'failed': 'danger',
+        ContributionStatus.WAITING: 'secondary',
+        ContributionStatus.PENDING: 'light',
+        ContributionStatus.SUCCESS: 'success',
+        ContributionStatus.FAILED: 'danger',
     }
-    status = models.CharField(
-        max_length=20, choices=STATUS_CHOICES, default=''
-    )
 
     class Meta:
         ordering = ('-timestamp',)

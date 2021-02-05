@@ -11,7 +11,9 @@ from froide.helper.db_utils import save_obj_with_slug
 
 from froide_payment.models import Order, CHECKOUT_PAYMENT_CHOICES_DICT
 
-from .models import OVERHEAD_FACTOR, Crowdfunding, Contribution
+from .models import (
+    OVERHEAD_FACTOR, CrowdfundingKind, Crowdfunding, Contribution
+)
 
 
 CROWDFUNDING_METHODS = (
@@ -61,7 +63,7 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
 
     kind = forms.ChoiceField(
         label=_('Kind of costs'),
-        choices=Crowdfunding.KIND_CHOICES,
+        choices=CrowdfundingKind.choices,
         help_text=_('What area of your request would you like to crowdfund?')
     )
 
