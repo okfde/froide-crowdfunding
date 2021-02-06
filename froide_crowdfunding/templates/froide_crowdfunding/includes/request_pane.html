@@ -6,8 +6,15 @@
 {% with crowdfundings=object|get_crowdfundings %}
   {% for crowdfunding in crowdfundings %}
     <h4>
-      {{ crowdfunding.title }} - {{ crowdfunding.amount_requested }}&nbsp;€
+      {% if crowdfunding.is_public %}
+        <a href="{{ crowdfunding.get_absolute_url }}">{{ crowdfunding.title }}</a>
+      {% else %}
+        {{ crowdfunding.title }}      
+      {% endif %}
     </h4>
+    <p>
+      {{ crowdfunding.amount_requested }}&nbsp;€ - {{ crowdfunding.get_kind_display }}
+    </p>
     {% if crowdfunding.status == "needs_approval" %}
       <p>
         {% trans "This crowdfunding is waiting for approval." %}
