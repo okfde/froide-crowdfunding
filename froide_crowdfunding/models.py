@@ -109,8 +109,11 @@ class Crowdfunding(models.Model):
     def progress_tentative(self):
         if self.amount_needed == 0:
             return 0
-        only_tentative = max(0, self.amount_tentative - self.amount_raised)
-        return min(int(only_tentative / self.amount_needed * 100), 100)
+        return min(int(self.amount_pledged / self.amount_needed * 100), 100)
+
+    @property
+    def amount_pledged(self):
+        return max(0, self.amount_tentative - self.amount_raised)
 
     @property
     def is_public(self):
