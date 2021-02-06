@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='crowdfunding',
             name='status',
-            field=models.CharField(choices=[('needs_approval', 'needs approval'), ('denied', 'denied'), ('running', 'running'), ('successful', 'successful'), ('failed', 'failed'), ('finished', 'finished')], default='needs_approval', max_length=25),
+            field=models.CharField(choices=[('needs_approval', 'needs approval'), ('denied', 'denied'), ('running', 'running'), ('successful', 'successful'), ('failed', 'failed')], default='needs_approval', max_length=25),
         ),
     ]
