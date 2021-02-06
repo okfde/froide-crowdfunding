@@ -39,7 +39,7 @@ class CrowdfundingDetailView(DetailView):
 
     def get_queryset(self):
         return Crowdfunding.objects.filter(
-            Q(status='running') | Q(status='finished')
+            status__in=Crowdfunding.PUBLIC_STATUS
         )
 
     def get_context_data(self, **kwargs):
