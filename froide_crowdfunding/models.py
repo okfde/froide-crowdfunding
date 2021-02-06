@@ -116,6 +116,10 @@ class Crowdfunding(models.Model):
     def is_public(self):
         return self.status in self.PUBLIC_STATUS
 
+    @property
+    def is_finished(self):
+        return self.status in self.FINAL_STATUS
+
     def get_absolute_url(self):
         return reverse('crowdfunding:crowdfunding-detail',
                        kwargs={'slug': self.slug})

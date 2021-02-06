@@ -16,7 +16,7 @@
       <p>
         {% trans "This crowdfunding has received feedback and needs your review." %}
       </p>
-    {% elif crowdfunding.status == "finished" %}
+    {% elif crowdfunding.is_finished %}
       {% trans "This crowdfunding has finished." %}
     {% else %}
       {% trans "This crowdfunding is running!" %}
