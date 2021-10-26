@@ -49,8 +49,9 @@ class CrowdfundingAdmin(admin.ModelAdmin):
 class ContributionAdmin(admin.ModelAdmin):
     raw_id_fields = ('crowdfunding', 'user', 'order')
     list_display = (
-        'crowdfunding', 'user', 'timestamp',
-        'amount', 'status', 'public',
+        'get_email', 'amount', 'timestamp',
+        'crowdfunding',
+        'status', 'public', 'user'
     )
     list_filter = (
         'status', 'public',
@@ -62,7 +63,7 @@ class ContributionAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         qs = qs.prefetch_related(
-            'crowdfunding', 'user'
+            'crowdfunding', 'user', 'order'
         )
         return qs
 
