@@ -194,7 +194,11 @@ class Contribution(models.Model):
         verbose_name_plural = _('Contributions')
 
     def __str__(self):
-        return 'Contribution %s' % self.pk
+        return '%s from %s (%s)' % (
+            self.amount,
+            self.get_email(),
+            self.pk
+        )
 
     def get_absolute_url(self):
         if self.order:
@@ -216,6 +220,13 @@ class Contribution(models.Model):
     @property
     def status_color(self):
         return self.STATUS_COLORS[self.status]
+
+    def get_email(self):
+        if self.user:
+            return self.user.email
+        if self.order:
+            return self.order.user_email
+        return ''
 
     def get_reference_data(self):
         return {
