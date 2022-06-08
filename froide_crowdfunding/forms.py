@@ -210,7 +210,7 @@ class ContributionForm(forms.Form):
         })
     )
     postcode = forms.CharField(
-        max_length=255,
+        max_length=20,
         label=_('Postcode'),
         widget=forms.TextInput(attrs={
             'placeholder': _('Postcode'),
