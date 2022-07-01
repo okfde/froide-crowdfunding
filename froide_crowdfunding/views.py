@@ -110,7 +110,9 @@ def request_crowdfunding(request, pk):
 
 
 def start_contribution(request, pk, form_class=ContributionForm, extra_context=None):
-    crowdfunding = get_object_or_404(Crowdfunding, pk=pk)
+    crowdfunding = get_object_or_404(
+        Crowdfunding.objects.filter(status__in=Crowdfunding.PUBLIC_STATUS), pk=pk
+    )
     if crowdfunding.status != "running":
         return redirect(crowdfunding)
 
