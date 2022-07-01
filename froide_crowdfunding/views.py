@@ -112,7 +112,7 @@ def request_crowdfunding(request, pk):
 def start_contribution(request, pk, form_class=ContributionForm, extra_context=None):
     crowdfunding = get_object_or_404(Crowdfunding, pk=pk)
     if crowdfunding.status != "running":
-        return render_403(request)
+        return redirect(crowdfunding)
 
     user = None
     if request.user.is_authenticated:
