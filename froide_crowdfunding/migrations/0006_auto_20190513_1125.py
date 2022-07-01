@@ -6,18 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('froide_crowdfunding', '0005_crowdfunding_public_interest'),
+        ("froide_crowdfunding", "0005_crowdfunding_public_interest"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='crowdfunding',
-            name='feedback',
+            model_name="crowdfunding",
+            name="feedback",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='crowdfunding',
-            name='status',
-            field=models.CharField(choices=[('needs_approval', 'needs approval'), ('denied', 'denied'), ('running', 'running'), ('successful', 'successful'), ('failed', 'failed')], default='needs_approval', max_length=25),
+            model_name="crowdfunding",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("needs_approval", "needs approval"),
+                    ("denied", "denied"),
+                    ("running", "running"),
+                    ("successful", "successful"),
+                    ("failed", "failed"),
+                ],
+                default="needs_approval",
+                max_length=25,
+            ),
         ),
     ]

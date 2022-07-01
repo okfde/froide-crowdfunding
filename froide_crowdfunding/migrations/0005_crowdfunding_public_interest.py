@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('froide_crowdfunding', '0004_contribution_public'),
+        ("froide_crowdfunding", "0004_contribution_public"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='crowdfunding',
-            name='public_interest',
+            model_name="crowdfunding",
+            name="public_interest",
             field=models.TextField(blank=True),
         ),
     ]

@@ -1,5 +1,5 @@
-from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 
 from froide_payment.models import PaymentStatus
 
@@ -17,19 +17,19 @@ def payment_status_changed(sender=None, instance=None, **kwargs):
 
     if instance.status == PaymentStatus.CONFIRMED:
         if obj.order.is_fully_paid():
-            if obj.status != 'success':
-                obj.status = 'success'
-                contribution_successful.send(
-                    sender=Contribution, contribution=obj
-                )
+            if obj.status != "success":
+                obj.status = "success"
+                contribution_successful.send(sender=Contribution, contribution=obj)
         else:
-            obj.status = 'pending'
+            obj.status = "pending"
     elif instance.status in (
-            PaymentStatus.ERROR, PaymentStatus.REFUNDED,
-            PaymentStatus.REJECTED):
-        obj.status = 'failed'
+        PaymentStatus.ERROR,
+        PaymentStatus.REFUNDED,
+        PaymentStatus.REJECTED,
+    ):
+        obj.status = "failed"
     elif instance.status in (PaymentStatus.INPUT, PaymentStatus.PENDING):
-        obj.status = 'pending'
+        obj.status = "pending"
     obj.save()
 
     crowdfunding = obj.crowdfunding
@@ -46,14 +46,12 @@ def send_contribution_notification(sender=None, contribution=None, **kawrgs):
     send_template_email(
         user=contribution.user,
         email=email,
-        subject=_(
-            '💸 Your crowdfunding contribution has been received'
-        ),
-        template='froide_crowdfunding/emails/contribution_received.txt',
+        subject=_("💸 Your crowdfunding contribution has been received"),
+        template="froide_crowdfunding/emails/contribution_received.txt",
         context={
-            'crowdfunding': contribution.crowdfunding,
-            'user': order.get_user_or_order(),
-            'url': settings.SITE_URL + order.get_absolute_url(),
-            'site_name': settings.SITE_NAME
-        }
+            "crowdfunding": contribution.crowdfunding,
+            "user": order.get_user_or_order(),
+            "url": settings.SITE_URL + order.get_absolute_url(),
+            "site_name": settings.SITE_NAME,
+        },
     )

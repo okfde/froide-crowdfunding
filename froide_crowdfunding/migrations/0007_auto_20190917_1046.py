@@ -6,12 +6,18 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('froide_crowdfunding', '0006_auto_20190513_1125'),
+        ("froide_crowdfunding", "0006_auto_20190513_1125"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='crowdfunding',
-            options={'get_latest_by': 'date_requested', 'ordering': ('-date_requested',), 'permissions': (('can_crowdfund', 'Can use crowdfunding'),), 'verbose_name': 'Crowdfunding', 'verbose_name_plural': 'Crowdfundings'},
+            name="crowdfunding",
+            options={
+                "get_latest_by": "date_requested",
+                "ordering": ("-date_requested",),
+                "permissions": (("can_crowdfund", "Can use crowdfunding"),),
+                "verbose_name": "Crowdfunding",
+                "verbose_name_plural": "Crowdfundings",
+            },
         ),
     ]
