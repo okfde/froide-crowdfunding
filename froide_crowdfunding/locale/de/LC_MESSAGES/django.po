@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-05 15:50+0000\n"
-"PO-Revision-Date: 2021-05-12 17:23+0100\n"
+"POT-Creation-Date: 2022-07-05 14:50+0200\n"
+"PO-Revision-Date: 2022-07-05 14:52+0200\n"
 "Last-Translator: Stefan Wehrmeyer <stefan.wehrmeyer@okfn.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,87 +16,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: admin.py:32
+#: froide_crowdfunding/admin.py
 msgid "💸 Your crowdfunding project needs review"
 msgstr "💸 Crowdfunding-Projekt zu überprüfen"
 
-#: admin.py:41
+#: froide_crowdfunding/admin.py
 msgid "💸 Your crowdfunding project has been activated"
 msgstr "💸 Crowdfunding-Projekt live"
 
-#: apps.py:8
+#: froide_crowdfunding/apps.py
 msgid "Froide Crowdfunding App"
 msgstr "Froide Crowdfunding-App"
 
-#: apps.py:31
+#: froide_crowdfunding/apps.py
 msgid "Your crowdfundings"
 msgstr "Meine Crowdfundings"
 
-#: cms_apps.py:8
+#: froide_crowdfunding/cms_apps.py
 msgid "Crowdfunding CMS App"
 msgstr "Crowdfunding CMS App"
 
-#: cms_plugins.py:15 cms_plugins.py:38 cms_plugins.py:54 cms_plugins.py:79
-#: models.py:88 templates/froide_crowdfunding/detail.html:12
-#: templates/froide_crowdfunding/includes/request_pane.html:5
+#: froide_crowdfunding/cms_plugins.py froide_crowdfunding/models.py
+#: froide_crowdfunding/templates/froide_crowdfunding/detail.html
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "Crowdfunding"
 msgstr "Crowdfunding"
 
-#: cms_plugins.py:16
+#: froide_crowdfunding/cms_plugins.py
 msgid "Crowdfunding Embed Form"
 msgstr "Crowdfunding-Embed-Formular"
 
-#: cms_plugins.py:39
+#: froide_crowdfunding/cms_plugins.py
 msgid "Crowdfunding Progress"
 msgstr "Crowdfunding-Fortschritt"
 
-#: cms_plugins.py:55
+#: froide_crowdfunding/cms_plugins.py
 msgid "Crowdfunding Contributors"
 msgstr "Crowdfunding-Unterstützende"
 
-#: cms_plugins.py:80
+#: froide_crowdfunding/cms_plugins.py
 msgid "Crowdfunding Project List"
 msgstr "Crowdfunding-Projektliste"
 
-#: forms.py:55
+#: froide_crowdfunding/forms.py
 msgid "Title"
 msgstr "Titel"
 
-#: forms.py:57
+#: froide_crowdfunding/forms.py
 msgid "Title of campaign"
 msgstr "Titel der Crowdfunding-Kampagne"
 
-#: forms.py:63
+#: froide_crowdfunding/forms.py
 msgid "Kind of costs"
 msgstr "Art der Kosten"
 
-#: forms.py:65
+#: froide_crowdfunding/forms.py
 msgid "What area of your request would you like to crowdfund?"
 msgstr "Für welchen Bereich Ihrer Anfrage würden Sie gerne sammeln?"
 
-#: forms.py:69
+#: froide_crowdfunding/forms.py
 msgid "What is your interest in this information?"
 msgstr "Warum interessieren Sie sich für diese Information?"
 
-#: forms.py:71
+#: froide_crowdfunding/forms.py
 msgid "Describe why getting the information is important to you."
 msgstr "Beschreiben Sie, warum Sie die Informationen haben wollen."
 
-#: forms.py:79
+#: froide_crowdfunding/forms.py
 msgid "Why is this important to the public?"
 msgstr "Warum ist das wichtig für die Öffentlichkeit?"
 
-#: forms.py:81
+#: froide_crowdfunding/forms.py
 msgid "Describe how this case affects the public."
 msgstr "Beschreiben Sie, was die Öffentlichkeit von der Information hat."
 
-#: forms.py:88 forms.py:158
+#: froide_crowdfunding/forms.py
 msgid "Amount"
 msgstr "Betrag"
 
-#: forms.py:95
+#: froide_crowdfunding/forms.py
 msgid ""
 "Please specify the amount you need to raise (minimum 10 Euro). We will "
 "increase this amount to cover our own costs."
@@ -105,27 +105,27 @@ msgstr ""
 "Euro). Wir erhöhen diesen Betrag automatisch, um unsere eigenen Kosten zu "
 "decken."
 
-#: forms.py:103 forms.py:256
+#: froide_crowdfunding/forms.py
 msgid "Accept our terms for crowdfunding."
 msgstr "Bedingungen der Crowdfunding-Kampagne akzeptieren."
 
-#: forms.py:106
+#: froide_crowdfunding/forms.py
 msgid "You need to accept our crowdfunding terms."
 msgstr "Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen akzeptieren."
 
-#: forms.py:135
+#: froide_crowdfunding/forms.py
 msgid "You have an ongoing crowdfunding."
 msgstr "SIe haben ein laufendes Crowdfunding."
 
-#: forms.py:165
+#: froide_crowdfunding/forms.py
 msgid "Please specify the amount you want to contribute."
 msgstr "Bitte geben Sie den Betrag an, den Sie beitragen können."
 
-#: forms.py:169
+#: froide_crowdfunding/forms.py
 msgid "Note"
 msgstr "Nachricht"
 
-#: forms.py:173
+#: froide_crowdfunding/forms.py
 msgid ""
 "Leave an optional public note (260 chars) why you are supporting this "
 "crowdfunding."
@@ -133,201 +133,358 @@ msgstr ""
 "Eine öffentliche Nachricht (260 Zeichen) hinterlassen, warum Sie diese "
 "Crowdfunding-Kampagne unterstützen."
 
-#: forms.py:183 forms.py:185
+#: froide_crowdfunding/forms.py
 msgid "First name"
 msgstr "Vorname"
 
-#: forms.py:191 forms.py:193
+#: froide_crowdfunding/forms.py
 msgid "Last name"
 msgstr "Nachname"
 
-#: forms.py:199
+#: froide_crowdfunding/forms.py
 msgid "Show my name as a public contributor"
 msgstr "Ihren Namen öffentlich am Beitrag anzeigen"
 
-#: forms.py:204 forms.py:206
+#: froide_crowdfunding/forms.py
 msgid "Address"
 msgstr "Adresse"
 
-#: forms.py:212 forms.py:214
+#: froide_crowdfunding/forms.py
 msgid "Postcode"
 msgstr "Postleitzahl"
 
-#: forms.py:220 forms.py:222
+#: froide_crowdfunding/forms.py
 msgid "City"
 msgstr "Stadt"
 
-#: forms.py:227
+#: froide_crowdfunding/forms.py
 msgid "Country"
 msgstr "Land"
 
-#: forms.py:229
+#: froide_crowdfunding/forms.py
 msgid "Germany"
 msgstr "Deutschland"
 
-#: forms.py:230
+#: froide_crowdfunding/forms.py
 msgid "Austria"
 msgstr "Österreich"
 
-#: forms.py:231
+#: froide_crowdfunding/forms.py
 msgid "Switzerland"
 msgstr "Schweiz"
 
-#: forms.py:240
+#: froide_crowdfunding/forms.py
 msgid "Email"
 msgstr "E-Mail"
 
-#: forms.py:247
+#: froide_crowdfunding/forms.py
 msgid "Payment method"
 msgstr "Zahlungsmethode"
 
-#: forms.py:259
+#: froide_crowdfunding/forms.py
 msgid "You need to accept our Terms and Conditions and Priavcy Statement."
 msgstr ""
 "Sie müssen unsere Bedingungen für Crowdfunding-Kampagnen und unsere "
 "Datenschutzerklärung akzeptieren."
 
-#: forms.py:309
+#: froide_crowdfunding/forms.py
 msgid "Contribution to Crowdfunding “{}”"
 msgstr "Beitrag zum Crowdfunding “{}”"
 
-#: listeners.py:50
+#: froide_crowdfunding/listeners.py
 msgid "💸 Your crowdfunding contribution has been received"
 msgstr "💸 Spende für Crowdfunding-Projekt eingetroffen"
 
-#: models.py:30
+#: froide_crowdfunding/models.py
 msgid "needs approval"
 msgstr "braucht Freigabe"
 
-#: models.py:31
+#: froide_crowdfunding/models.py
 msgid "denied"
 msgstr "abgelehnt"
 
-#: models.py:32
+#: froide_crowdfunding/models.py
 msgid "running"
 msgstr "läuft"
 
-#: models.py:33
+#: froide_crowdfunding/models.py
 msgid "successful"
 msgstr "erfolgreich"
 
-#: models.py:34
+#: froide_crowdfunding/models.py
 msgid "failed"
 msgstr "fehlgeschlagen"
 
-#: models.py:46
+#: froide_crowdfunding/models.py
 msgid "fees"
 msgstr "Gebühren"
 
-#: models.py:47
+#: froide_crowdfunding/models.py
 msgid "appeal"
 msgstr "Widerspruch"
 
-#: models.py:48
+#: froide_crowdfunding/models.py
 msgid "lawsuit"
 msgstr "Klage"
 
-#: models.py:49
+#: froide_crowdfunding/models.py
 msgid "other"
 msgstr "andere"
 
-#: models.py:89
+#: froide_crowdfunding/models.py
 msgid "Crowdfundings"
 msgstr "Crowdfundings"
 
-#: models.py:91
+#: froide_crowdfunding/models.py
 msgid "Can use crowdfunding"
 msgstr "Kann Crowdfunding nutzen"
 
-#: models.py:158
+#: froide_crowdfunding/models.py
 msgid "Waiting for input"
 msgstr "Warte auf Eingabe"
 
-#: models.py:159
+#: froide_crowdfunding/models.py
 msgid "Processing..."
 msgstr "In Bearbeitung..."
 
-#: models.py:160
+#: froide_crowdfunding/models.py
 msgid "Successful"
 msgstr "Erfolgreich"
 
-#: models.py:161
+#: froide_crowdfunding/models.py
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
-#: models.py:176
+#: froide_crowdfunding/models.py
 msgid "Contribution"
 msgstr "Beitrag"
 
-#: models.py:177 templates/froide_crowdfunding/detail.html:30
+#: froide_crowdfunding/models.py
+#: froide_crowdfunding/templates/froide_crowdfunding/detail.html
 msgid "Contributions"
 msgstr "Beiträge"
 
-#: templates/admin/froide_crowdfunding/crowdfunding/change_form.html:8
+#: froide_crowdfunding/templates/admin/froide_crowdfunding/crowdfunding/change_form.html
 msgid "This crowdfunding's contributions"
 msgstr "Die Beiträge dieses Crowdfundings"
 
-#: templates/froide_crowdfunding/detail.html:22
+#: froide_crowdfunding/templates/froide_crowdfunding/detail.html
 msgid "Add your contribution"
 msgstr "Beitrag leisten"
 
-#: templates/froide_crowdfunding/detail.html:55
+#: froide_crowdfunding/templates/froide_crowdfunding/detail.html
 msgid "from you (name not public)"
 msgstr "von Ihnen (Name nicht öffentlich)"
 
-#: templates/froide_crowdfunding/detail.html:60
+#: froide_crowdfunding/templates/froide_crowdfunding/detail.html
 msgid "Show details"
 msgstr "Zeige Details"
 
-#: templates/froide_crowdfunding/includes/crowdfunding_form.html:22
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/contribution_received.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/created.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/denied.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/needs_approval.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/running.txt
+#, python-format
+msgid "Hello %(name)s,"
+msgstr "Hallo %(name)s,"
+
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/contribution_received.txt
+#, python-format
+msgid ""
+"your contribution to the crowdfunding project “%(title)s” has been "
+"received.\n"
+"\n"
+"You can find details about your contribution here:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"It would help this crowdfunding, if you promote it to your friends and "
+"family.\n"
+"Thank you for your support!\n"
+msgstr ""
+"Ihre Spende für das Crowdfunding-Projekt „%(title)s“ ist bei uns erfolgreich "
+"eingegangen. \n"
+"\n"
+"Unter folgendem Link finden Sie einen Überblick über Ihre geleisteten "
+"Beiträge: \n"
+"\n"
+"%(url)s\n"
+"\n"
+"Um die Kampagne noch bekannter zu machen und die angestrebte Summe zu "
+"erreichen, erzählen Sie Freunden und Bekannten davon. \n"
+"Vielen Dank für Ihre Unterstützung!\n"
+
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/contribution_received.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/created.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/denied.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/needs_approval.txt
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/running.txt
+#, python-format
+msgid ""
+"\n"
+"Cheers,\n"
+"%(site_name)s\n"
+msgstr ""
+"\n"
+"Beste Grüße\n"
+"%(site_name)s\n"
+
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/created.txt
+#, python-format
+msgid ""
+"Your crowdfunding project “%(title)s” has been reviewed and is now active. "
+"You can find it here:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Now is the time to spread the word and gather support!\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich freigeschaltet und "
+"ist nun für Andere einsehbar. Sie können es hier finden:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Bewerben Sie in den kommenden Wochen Ihr Projekt auf möglichst vielen "
+"Kanälen, um die angestrebte Summe zu erzielen. \n"
+"Wir werden Sie in den folgenden Wochen über den Stand Ihrer Kampagne "
+"informieren.\n"
+
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/denied.txt
+#, python-format
+msgid ""
+"Unfortunately, your crowdfunding project “%(title)s” could not be activated. "
+"Please review the following aspects of your campaign and adjust your "
+"project:\n"
+"\n"
+"%(feedback)s\n"
+"\n"
+"%(url)s\n"
+"\n"
+"When you are done, we will review your crowdfunding project again and we "
+"will let you know if it can be activated.\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ konnte nicht freigeschaltet werden. "
+"Bitte überprüfen und korrigieren Sie folgende Bereiche Ihrer Kampagne: \n"
+"\n"
+"%(feedback)s\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Daraufhin werden wir Ihre Korrekturen nochmals prüfen. Im Anschluss erhalten "
+"Sie eine E-Mail, ob das Crowdfunding-Projekt freigeschaltet werden konnte.\n"
+
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/needs_approval.txt
+#, python-format
+msgid ""
+"your crowdfunding project “%(title)s” was created successfully.\n"
+"\n"
+"We are now checking your project. We will get back to you in one week and "
+"notify you if your crowdfunding project has been activated.\n"
+"\n"
+"If you have further questions, please contact us.\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich erstellt.\n"
+"\n"
+"Im Folgenden wird FragDenStaat das Projekt innerhalb einer Woche prüfen. \n"
+"Anschließend erhalten Sie von uns eine weitere Benachrichtigung, ob das "
+"Projekt freigeschaltet wurde.\n"
+"\n"
+"Sollten Sie weitere Fragen haben, können Sie uns gerne kontaktieren.\n"
+
+#: froide_crowdfunding/templates/froide_crowdfunding/emails/running.txt
+#, python-format
+msgid ""
+"your crowdfunding project “%(title)s” is now active and can be funded by the "
+"public. You can find the project here:\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Please promote your crowdfunding project on social media and via other "
+"channels, so it can reach the requested amount.\n"
+"We will keep you informed about the progress.\n"
+msgstr ""
+"Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich freigeschaltet und "
+"ist nun für Andere einsehbar.\n"
+"\n"
+"%(url)s\n"
+"\n"
+"Bewerben Sie in den kommenden Wochen Ihr Projekt auf möglichst vielen "
+"Kanälen, um die angestrebte Summe zu erzielen. \n"
+"Wir werden Sie in den folgenden Wochen über den Stand Ihrer Kampagne "
+"informieren. \n"
+
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_form.html
 msgid "Next step &rarr;"
 msgstr "Nächster Schritt &rarr;"
 
-#: templates/froide_crowdfunding/includes/crowdfunding_meta.html:14
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_meta.html
 msgid "go to request"
 msgstr "zur Anfrage"
 
-#: templates/froide_crowdfunding/includes/crowdfunding_meta.html:24
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_meta.html
 #, python-format
 msgid ""
 "\n"
-"      This user is crowdfunding <strong>%(amount)s&nbsp;€</strong>.\n"
+"      This user crowdfunded <strong>%(amount)s&nbsp;€</strong>.\n"
 "    "
 msgstr ""
 "\n"
-"      Diese/r Nutzer/in sammelt <strong>%(amount)s&nbsp;€</strong>.\n"
+"      Diese*r Nutzer*in sammelte <strong>%(amount)s&nbsp;€</strong>.\n"
 "    "
 
-#: templates/froide_crowdfunding/includes/crowdfunding_meta.html:28
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_meta.html
 #, python-format
 msgid ""
 "\n"
-"      %(name)s is crowdfunding <strong>%(amount)s&nbsp;€</strong>.\n"
+"      %(name)s crowdfunded <strong>%(amount)s&nbsp;€</strong>.\n"
 "    "
+msgstr ""
+"\n"
+"      %(name)s sammelte <strong>%(amount)s&nbsp;€</strong>.\n"
+"    "
+
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_meta.html
+#, python-format
+msgid ""
+"\n"
+"        This user is crowdfunding <strong>%(amount)s&nbsp;€</strong>.\n"
+"      "
+msgstr ""
+"\n"
+"      Diese*r Nutzer*in sammelt <strong>%(amount)s&nbsp;€</strong>.\n"
+"    "
+
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_meta.html
+#, python-format
+msgid ""
+"\n"
+"        %(name)s is crowdfunding <strong>%(amount)s&nbsp;€</strong>.\n"
+"      "
 msgstr ""
 "\n"
 "      %(name)s sammelt <strong>%(amount)s&nbsp;€</strong>.\n"
 "    "
 
-#: templates/froide_crowdfunding/includes/crowdfunding_meta.html:33
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_meta.html
 msgid "Here's why this matters to the crowdfunder."
 msgstr "Warum das für den/die Crowdfunder/in persönlich wichtig ist."
 
-#: templates/froide_crowdfunding/includes/crowdfunding_meta.html:40
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_meta.html
 msgid "Why this information is important to the public."
 msgstr "Warum das wichtig für die Öffentlichkeit ist."
 
-#: templates/froide_crowdfunding/includes/crowdfunding_progress.html:5
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_progress.html
 #, python-format
 msgid "%(amount)s&nbsp;€ received (%(percent)s%%)"
 msgstr "%(amount)s&nbsp;€ erhalten (%(percent)s%%)"
 
-#: templates/froide_crowdfunding/includes/crowdfunding_progress.html:7
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_progress.html
 #, python-format
 msgid "%(amount)s&nbsp;€ pledged but unconfirmed (%(percent)s%%)"
 msgstr "%(amount)s&nbsp;€ versprochen aber unbestätigt (%(percent)s%%)"
 
-#: templates/froide_crowdfunding/includes/crowdfunding_progress.html:13
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_progress.html
 #, python-format
 msgid ""
 "\n"
@@ -340,7 +497,7 @@ msgstr ""
 "€, %(amount)s&nbsp;€ erhalten\n"
 "          "
 
-#: templates/froide_crowdfunding/includes/crowdfunding_progress.html:17
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/crowdfunding_progress.html
 #, python-format
 msgid ""
 "\n"
@@ -351,47 +508,47 @@ msgstr ""
 "            %(amount)s&nbsp;€ von %(amount_needed)s&nbsp;€ erhalten\n"
 "          "
 
-#: templates/froide_crowdfunding/includes/request_pane.html:13
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "This crowdfunding is waiting for approval."
 msgstr "Dieses Crowdfunding wartet auf Freigabe."
 
-#: templates/froide_crowdfunding/includes/request_pane.html:17
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "This crowdfunding has received feedback and needs your review."
 msgstr "Dieses Crowdfunding hat Feedback erhalten und muss angepasst werden."
 
-#: templates/froide_crowdfunding/includes/request_pane.html:20
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "This crowdfunding has finished."
 msgstr "Dieses Crowdfunding ist abgeschlossen."
 
-#: templates/froide_crowdfunding/includes/request_pane.html:22
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "This crowdfunding is running!"
 msgstr "Dieses Crowdfunding läuft gerade!"
 
-#: templates/froide_crowdfunding/includes/request_pane.html:29
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "Start a crowdfunding campaign"
 msgstr "Starten Sie eine Crowdfunding-Kampagne"
 
-#: templates/froide_crowdfunding/includes/request_pane.html:31
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "Provide your details"
 msgstr "Geben Sie Ihre Angaben ein"
 
-#: templates/froide_crowdfunding/includes/request_pane.html:35
+#: froide_crowdfunding/templates/froide_crowdfunding/includes/request_pane.html
 msgid "Review feedback"
 msgstr "Feedback ansehen"
 
-#: templates/froide_crowdfunding/request_crowdfunding.html:12
+#: froide_crowdfunding/templates/froide_crowdfunding/request_crowdfunding.html
 msgid "You have received the following feedback"
 msgstr "Sie haben folgendes Feedback erhalten"
 
-#: templates/froide_crowdfunding/request_crowdfunding.html:17
+#: froide_crowdfunding/templates/froide_crowdfunding/request_crowdfunding.html
 msgid "Please adjust the details of your crowdfunding below."
 msgstr "Bitte passen Sie die Detail Ihres Crowdfunding-Projekts an."
 
-#: templates/froide_crowdfunding/request_crowdfunding.html:27
+#: froide_crowdfunding/templates/froide_crowdfunding/request_crowdfunding.html
 msgid "Request crowdfunding campaign"
 msgstr "Crowdfunding-Kampagne einreichen"
 
-#: templates/froide_payment/order/froide_crowdfunding/contribution/detail.html:8
+#: froide_crowdfunding/templates/froide_payment/order/froide_crowdfunding/contribution/detail.html
 #, python-format
 msgid ""
 "\n"
@@ -402,146 +559,25 @@ msgstr ""
 "Dies ist ein Beitrag zur Crowdfunding-Kampagne „<a href=\"%(url)s\">"
 "%(title)s</a>“.\n"
 
-#: templates/froide_payment/order/froide_crowdfunding/contribution/detail.html:14
+#: froide_crowdfunding/templates/froide_payment/order/froide_crowdfunding/contribution/detail.html
 msgid "Status of your contribution is: "
 msgstr "Status Ihres Beitrags ist: "
 
-#: views.py:77
+#: froide_crowdfunding/views.py
 msgid "Your crowdfunding campaign has been submitted for approval."
 msgstr "Ihre Crowdfunding-Kampagne wurde eingereicht und wartet auf Freigabe."
 
-#: views.py:88
+#: froide_crowdfunding/views.py
 msgid "💸 Your crowdfunding project has been created"
 msgstr "💸 Crowdfunding-Projekt erstellt"
 
-#: views.py:94
+#: froide_crowdfunding/views.py
 msgid "Crowdfunding project needs approval"
 msgstr "Crowdfunding-Projekt braucht Genehmigung"
 
-#: views.py:104
+#: froide_crowdfunding/views.py
 msgid "Your form contained errors."
 msgstr "Das Formular enthielt Fehler."
-
-#, python-format
-#~ msgid "Hello %(name)s,"
-#~ msgstr "Hallo %(name)s,"
-
-#, python-format
-#~ msgid ""
-#~ "your contribution to the crowdfunding project “%(title)s” has been "
-#~ "received.\n"
-#~ "\n"
-#~ "You can find details about your contribution here:\n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "It would help this crowdfunding, if you promote it to your friends and "
-#~ "family.\n"
-#~ "Thank you for your support!\n"
-#~ msgstr ""
-#~ "Ihre Spende für das Crowdfunding-Projekt „%(title)s“ ist bei uns "
-#~ "erfolgreich eingegangen. \n"
-#~ "\n"
-#~ "Unter folgendem Link finden Sie einen Überblick über Ihre geleisteten "
-#~ "Beiträge: \n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "Um die Kampagne noch bekannter zu machen und die angestrebte Summe zu "
-#~ "erreichen, erzählen Sie Freunden und Bekannten davon. \n"
-#~ "Vielen Dank für Ihre Unterstützung!\n"
-
-#, python-format
-#~ msgid ""
-#~ "\n"
-#~ "Cheers,\n"
-#~ "%(site_name)s\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Beste Grüße\n"
-#~ "%(site_name)s\n"
-
-#, python-format
-#~ msgid ""
-#~ "Your crowdfunding project “%(title)s” has been reviewed and is now "
-#~ "active. You can find it here:\n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "Now is the time to spread the word and gather support!\n"
-#~ msgstr ""
-#~ "Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich freigeschaltet und "
-#~ "ist nun für Andere einsehbar. Sie können es hier finden:\n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "Bewerben Sie in den kommenden Wochen Ihr Projekt auf möglichst vielen "
-#~ "Kanälen, um die angestrebte Summe zu erzielen. \n"
-#~ "Wir werden Sie in den folgenden Wochen über den Stand Ihrer Kampagne "
-#~ "informieren.\n"
-
-#, python-format
-#~ msgid ""
-#~ "Unfortunately, your crowdfunding project “%(title)s” could not be "
-#~ "activated. Please review the following aspects of your campaign and "
-#~ "adjust your project:\n"
-#~ "\n"
-#~ "%(feedback)s\n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "When you are done, we will review your crowdfunding project again and we "
-#~ "will let you know if it can be activated.\n"
-#~ msgstr ""
-#~ "Ihr Crowdfunding-Projekt „%(title)s“ konnte nicht freigeschaltet werden. "
-#~ "Bitte überprüfen und korrigieren Sie folgende Bereiche Ihrer Kampagne: \n"
-#~ "\n"
-#~ "%(feedback)s\n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "Daraufhin werden wir Ihre Korrekturen nochmals prüfen. Im Anschluss "
-#~ "erhalten Sie eine E-Mail, ob das Crowdfunding-Projekt freigeschaltet "
-#~ "werden konnte.\n"
-
-#, python-format
-#~ msgid ""
-#~ "your crowdfunding project “%(title)s” was created successfully.\n"
-#~ "\n"
-#~ "We are now checking your project. We will get back to you in one week and "
-#~ "notify you if your crowdfunding project has been activated.\n"
-#~ "\n"
-#~ "If you have further questions, please contact us.\n"
-#~ msgstr ""
-#~ "Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich erstellt.\n"
-#~ "\n"
-#~ "Im Folgenden wird FragDenStaat das Projekt innerhalb einer Woche "
-#~ "prüfen. \n"
-#~ "Anschließend erhalten Sie von uns eine weitere Benachrichtigung, ob das "
-#~ "Projekt freigeschaltet wurde.\n"
-#~ "\n"
-#~ "Sollten Sie weitere Fragen haben, können Sie uns gerne kontaktieren.\n"
-
-#, python-format
-#~ msgid ""
-#~ "your crowdfunding project “%(title)s” is now active and can be funded by "
-#~ "the public. You can find the project here:\n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "Please promote your crowdfunding project on social media and via other "
-#~ "channels, so it can reach the requested amount.\n"
-#~ "We will keep you informed about the progress.\n"
-#~ msgstr ""
-#~ "Ihr Crowdfunding-Projekt „%(title)s“ wurde erfolgreich freigeschaltet und "
-#~ "ist nun für Andere einsehbar.\n"
-#~ "\n"
-#~ "%(url)s\n"
-#~ "\n"
-#~ "Bewerben Sie in den kommenden Wochen Ihr Projekt auf möglichst vielen "
-#~ "Kanälen, um die angestrebte Summe zu erzielen. \n"
-#~ "Wir werden Sie in den folgenden Wochen über den Stand Ihrer Kampagne "
-#~ "informieren. \n"
 
 #~ msgid "Amount received"
 #~ msgstr "Beträge erhalten"
