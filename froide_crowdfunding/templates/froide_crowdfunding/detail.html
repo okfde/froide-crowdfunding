@@ -17,11 +17,13 @@
   <div class="card-body">
     {% include "froide_crowdfunding/includes/crowdfunding_meta.html" with crowdfunding=crowdfunding %}
   </div>
-  <div class="card-footer text-right">
-    <a href="{{ crowdfunding.get_start_contribution_url }}" class="btn btn-success btn-lg">
-      {% trans "Add your contribution" %}
-    </a>
-  </div>
+  {% if not crowdfunding.is_finished %}
+    <div class="card-footer text-right">
+      <a href="{{ crowdfunding.get_start_contribution_url }}" class="btn btn-success btn-lg">
+        {% trans "Add your contribution" %}
+      </a>
+    </div>
+  {% endif %}
 </div>
 
 {% if contributions %}

@@ -20,14 +20,26 @@
 {% include "froide_crowdfunding/includes/crowdfunding_progress.html" with crowdfunding=crowdfunding %}
 
 <p class="lead">
+  {% if crowdfunding.is_finished %}
   {% if crowdfunding.user.private %}
-    {% blocktrans with amount=crowdfunding.amount_needed %}
-      This user is crowdfunding <strong>{{ amount }}&nbsp;€</strong>.
+    {% blocktrans with amount=crowdfunding.amount_raised %}
+      This user crowdfunded <strong>{{ amount }}&nbsp;€</strong>.
     {% endblocktrans %}
   {% else %}
-    {% blocktrans with amount=crowdfunding.amount_needed name=crowdfunding.user.get_full_name %}
-      {{ name }} is crowdfunding <strong>{{ amount }}&nbsp;€</strong>.
+    {% blocktrans with amount=crowdfunding.amount_raised name=crowdfunding.user.get_full_name %}
+      {{ name }} crowdfunded <strong>{{ amount }}&nbsp;€</strong>.
     {% endblocktrans %}
+  {% endif %}
+  {% else %}
+    {% if crowdfunding.user.private %}
+      {% blocktrans with amount=crowdfunding.amount_needed %}
+        This user is crowdfunding <strong>{{ amount }}&nbsp;€</strong>.
+      {% endblocktrans %}
+    {% else %}
+      {% blocktrans with amount=crowdfunding.amount_needed name=crowdfunding.user.get_full_name %}
+        {{ name }} is crowdfunding <strong>{{ amount }}&nbsp;€</strong>.
+      {% endblocktrans %}
+    {% endif %}
   {% endif %}
 </p>
 <h4>{% trans "Here's why this matters to the crowdfunder." %}</h4>
