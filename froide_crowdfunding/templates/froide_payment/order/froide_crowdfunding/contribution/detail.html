@@ -12,7 +12,7 @@ This is a contribution to the crowdfunding campaign “<a href="{{ url }}">{{ ti
 
 <p>
   {% trans "Status of your contribution is: "%}
-  <span class="badge badge-{{ object.status_color }}">
+  <span class="badge text-bg-{{ object.status_color }}">
   {{ object.get_status_display }}
   </span>
 </p>

@@ -9,16 +9,16 @@
 {% block app_body %}
 <div class="card mb-3 mt-3" id="crowdfunding-form">
   <div class="card-header">
-    <h3 class="float-left">{% trans "Crowdfunding" %}</h3>
+    <h3 class="float-start">{% trans "Crowdfunding" %}</h3>
     {% if crowdfunding.date_end %}
-      <time class="float-right" title="{{ crowdfunding.date_end }}" datetime="{{ crowdfunding.date_end | date:'c' }}">noch {{ crowdfunding.date_end|timeuntil }}</time>
+      <time class="float-end" title="{{ crowdfunding.date_end }}" datetime="{{ crowdfunding.date_end | date:'c' }}">noch {{ crowdfunding.date_end|timeuntil }}</time>
     {% endif %}
   </div>
   <div class="card-body">
     {% include "froide_crowdfunding/includes/crowdfunding_meta.html" with crowdfunding=crowdfunding %}
   </div>
   {% if not crowdfunding.is_finished %}
-    <div class="card-footer text-right">
+    <div class="card-footer text-end">
       <a href="{{ crowdfunding.get_start_contribution_url }}" class="btn btn-success btn-lg">
         {% trans "Add your contribution" %}
       </a>

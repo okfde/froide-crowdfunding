@@ -9,7 +9,7 @@
     </h5>
   </div>
   {% if not object == crowdfunding.request and crowdfunding.request %}
-    <div class="col-md-4 text-right">
+    <div class="col-md-4 text-end">
       <a class="btn btn-secondary btn-sm" href="{{ crowdfunding.request.get_absolute_url }}">
         {% trans "go to request" %}
       </a>

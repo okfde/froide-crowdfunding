@@ -7,7 +7,7 @@
       <div class="progress-bar progress-bar-striped progress-bar-animated" title="{% blocktrans with amount=crowdfunding.amount_pledged percent=crowdfunding.progress_tentative %}{{ amount }}&nbsp;€ pledged but unconfirmed ({{ percent }}%){% endblocktrans %}" role="progressbar" style="width: {{ crowdfunding.progress_tentative }}%" aria-valuenow="{{ crowdfunding.progress_tentative }}"></div>
     {% endif %}
   </div>
-  <div class="text-right">
+  <div class="text-end">
       <small class="text-muted">
         {% if crowdfunding.progress_tentative %}
           {% blocktrans with amount_pledged=crowdfunding.amount_tentative amount=crowdfunding.amount_raised amount_needed=crowdfunding.amount_needed %}
