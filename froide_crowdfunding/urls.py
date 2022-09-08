@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 
 from .views import (
     CrowdfundingDetailView,
@@ -9,20 +9,20 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r"^edit/$", CrowdfundingListView.as_view(), name="crowdfunding-edit"),
-    url(
-        r"^contribute/(?P<pk>\d+)/$",
+    path("edit/", CrowdfundingListView.as_view(), name="crowdfunding-edit"),
+    path(
+        "contribute/<int:pk>/",
         start_contribution,
         name="crowdfunding-start_contribution",
     ),
-    url(
-        r"^contribute/(?P<pk>\d+)/donate/$",
+    path(
+        "contribute/<int:pk>/donate/",
         start_contribution_donation,
         name="crowdfunding-start_contribution_donation",
     ),
-    url(r"^request/(?P<pk>\d+)/$", request_crowdfunding, name="crowdfunding-request"),
-    url(
-        r"^campaign/(?P<slug>[\w-]+)/$",
+    path("request/<int:pk>/", request_crowdfunding, name="crowdfunding-request"),
+    path(
+        "campaign/<slug:slug>/",
         CrowdfundingDetailView.as_view(),
         name="crowdfunding-detail",
     ),
