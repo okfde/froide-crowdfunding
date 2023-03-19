@@ -13,10 +13,12 @@ from froide.helper.widgets import BootstrapCheckboxInput, PriceInput
 
 from .models import OVERHEAD_FACTOR, Contribution, Crowdfunding, CrowdfundingKind
 
-CROWDFUNDING_METHODS = ("creditcard", "sepa", "paypal", "sofort")
+CROWDFUNDING_METHODS = ("sepa", "paypal", "creditcard")
 
 PAYMENT_METHODS = [
-    (method, CHECKOUT_PAYMENT_CHOICES_DICT[method]) for method in CROWDFUNDING_METHODS
+    (method, name)
+    for method, name in CHECKOUT_PAYMENT_CHOICES_DICT.items()
+    if method in CROWDFUNDING_METHODS
 ]
 
 
@@ -132,7 +134,6 @@ class CrowdfundingRequestStartForm(forms.ModelForm):
         )
         crowdfunding.status = "needs_approval"
         if crowdfunding.slug:
-
             crowdfunding.save()
         else:
             save_obj_with_slug(crowdfunding)
