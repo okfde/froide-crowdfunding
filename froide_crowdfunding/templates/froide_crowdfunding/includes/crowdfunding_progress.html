@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div>
-  <div class="progress" style="height: 25px">
+  <div class="progress">
     <div class="progress-bar" role="progressbar" title="{% blocktrans with amount=crowdfunding.amount_raised percent=crowdfunding.progress_percent %}{{ amount }}&nbsp;€ received ({{ percent }}%){% endblocktrans %}" style="width: {{ crowdfunding.progress_percent }}%" aria-valuenow="{{ crowdfunding.progress_percent }}"></div>
     {% if crowdfunding.progress_tentative %}
       <div class="progress-bar progress-bar-striped progress-bar-animated" title="{% blocktrans with amount=crowdfunding.amount_pledged percent=crowdfunding.progress_tentative %}{{ amount }}&nbsp;€ pledged but unconfirmed ({{ percent }}%){% endblocktrans %}" role="progressbar" style="width: {{ crowdfunding.progress_tentative }}%" aria-valuenow="{{ crowdfunding.progress_tentative }}"></div>
