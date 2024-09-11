@@ -15,12 +15,12 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Topic :: Utilities",
 ]
-dynamic = ["version"]
-dependencies = ["froide"]
+version = "0.0.1"
+dependencies = ["froide-payment"]
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-packages = ["froide_crowdfunding"]
+[tool.setuptools.packages.find]
+include = ["froide_crowdfunding*"]
