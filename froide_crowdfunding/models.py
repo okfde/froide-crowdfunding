@@ -131,7 +131,7 @@ class Crowdfunding(models.Model):
             amounts = contribution.order.get_payment_amounts()
             for amount_key in amounts:
                 # Assume all values in EUR
-                all_amounts[amount_key] += amounts[amount_key].amount
+                all_amounts[amount_key] += amounts[amount_key]
         self.amount_raised = all_amounts["total"]
         self.amount_tentative = all_amounts["tentative"]
         if save:
